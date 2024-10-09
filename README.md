@@ -44,7 +44,7 @@ Dans **Plantopia**, des rôles aléatoires sont assignés à chaque utilisateur 
 
 ## Mécanique de mort des plantes ⚰️
 
-Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 62 heures en temps réel), elle commence à se détériorer et peut mourir.
+Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 72 heures en temps réel), elle commence à se détériorer et peut mourir.
 
 ### Processus de détérioration :
 1. **Première étape** : La plante perd de la couleur, et ses feuilles jaunissent.
