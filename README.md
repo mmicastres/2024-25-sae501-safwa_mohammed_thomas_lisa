@@ -61,28 +61,20 @@ Si la plante est arrosée avant sa mort complète, elle peut récupérer, mais s
 Les fonctionnalités de **Plantopia** sont contrôlées par des gestes tactiles, permettant aux utilisateurs d’interagir facilement avec les plantes et l’environnement en RA.
 
 1. **Clic simple (Tap)** :
-   - **Action** : Sélectionner un pot ou un élément de l'environnement en RA.
-   - **Fonctionnalité associée** : Après avoir fait apparaître un pot, un simple clic permet de choisir l'endroit où le placer.
+   - **Action** : 
+   - **Fonctionnalité associée** : 
 
 2. **Double clic** :
-   - **Action** : Interagir rapidement avec une plante ou un élément.
-   - **Fonctionnalité associée** : Active des actions comme accélérer l'évolution d'une plante (uniquement pour le rôle **Double Pousse**).
+   - **Action** : 
+   - **Fonctionnalité associée** : 
 
 3. **Appui long (Long press)** :
-   - **Action** : Maintenir pour ouvrir un menu d'options.
-   - **Fonctionnalité associée** : Ouvre un menu pour déplacer ou supprimer un pot, ou interagir avec les rôles (sabotage, protection).
+   - **Action** : 
+   - **Fonctionnalité associée** : 
 
-4. **Glisser (Swipe)** :
-   - **Action** : Balayer l’écran pour ajuster la vue ou déplacer un objet en RA.
-   - **Fonctionnalité associée** : Ajuster la perspective, déplacer des objets, ou simuler l'arrosage.
-
-5. **Pincer pour zoomer (Pinch to zoom)** :
-   - **Action** : Ajuster la taille ou la perspective.
-   - **Fonctionnalité associée** : Agrandir ou réduire la taille des pots et des plantes pour une meilleure vue.
-
-6. **Rotation (Rotate)** :
-   - **Action** : Faire pivoter les objets avec deux doigts.
-   - **Fonctionnalité associée** : Permet de réorienter les pots et objets dans l’espace virtuel pour ajuster leur position.
+4. **Secoué (Shake)** :
+   - **Action** : 
+   - **Fonctionnalité associée** : 
 
 ---
 
