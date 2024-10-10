@@ -1,17 +1,17 @@
 # Plantopia 🌱
 
-**Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles en scannant des **QR codes**. Chaque interaction avec un QR code fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles aléatoires qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
+**Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles. Chaque interaction fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles aléatoires qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
 
 ---
 
 ## Fonctionnalités principales 🌿
 
-- **Scanner de QR Code** : Faites apparaître des pots de fleurs virtuels en scannant un QR code.
 - **Planter des graines** : Plantez et faites pousser une plante virtuelle dans un pot en RA.
-- **Arrosage virtuel** : Arrosez votre plante en scannant de nouveaux QR codes pour encourager sa croissance.
-- **Évolution de l'environnement** : À mesure que votre plante grandit, un décor virtuel en RA se développe autour de vous (arbres, fleurs, etc.).
+- **Arrosage virtuel** : Arrosez votre plante pour encourager sa croissance.
 - **Rôles aléatoires** : À chaque session, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
 - **Possibilité de mort des plantes** : Si une plante n’est pas arrosée régulièrement, elle peut se faner et mourir.
+- **Evolution du design en fonction de l'heure** : L'application passe en dark mode automatique dès le coucher du soleil, les plantes poussent aussi moins vite pendant la nuit.
+
 
 ---
 
@@ -60,22 +60,21 @@ Si la plante est arrosée avant sa mort complète, elle peut récupérer, mais s
 
 Les fonctionnalités de **Plantopia** sont contrôlées par des gestes tactiles, permettant aux utilisateurs d’interagir facilement avec les plantes et l’environnement en RA.
 
-1. **Clic simple (Tap)** :
-   - **Action** : 
+1. **Double clic** :
+   - **Action** : Planter une graine
    - **Fonctionnalité associée** : 
 
-2. **Double clic** :
-   - **Action** : 
+2. **Glissement vers le haut** :
+   - **Action** : Gérer l'ensoleillement 
    - **Fonctionnalité associée** : 
 
-3. **Appui long (Long press)** :
-   - **Action** : 
-   - **Fonctionnalité associée** : 
+3. **Secoué (Shake)** :
+   - **Action** : Arroser la plante
+   - **Fonctionnalité associée** :
 
-4. **Secoué (Shake)** :
-   - **Action** : 
-   - **Fonctionnalité associée** : 
-
+4. **Glissement vers le bas** :
+   - **Action** : Assécher la plante
+   - **Fonctionnalité associée** :
 ---
 
 ## Conclusion 🌸
