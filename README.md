@@ -1,6 +1,6 @@
 # Plantopia 🌱
 
-**Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles. Chaque interaction fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles aléatoires qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
+**Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles. Chaque interaction fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles qu'on peut acheter dans la boutique du jeu avec des points qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
 
 ---
 
