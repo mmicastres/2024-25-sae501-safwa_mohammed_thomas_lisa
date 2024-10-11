@@ -18,7 +18,7 @@
 
 ## Rôles spéciaux 🌟
 
-Dans **Plantopia**, des rôles aléatoires sont assignés à chaque utilisateur au début d'une session. Ces rôles peuvent aider à la croissance des plantes, la ralentir, ou la saboter. Voici les rôles disponibles :
+Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque utilisateur au début d'une session. Ces rôles peuvent aider à la croissance des plantes, la ralentir, ou la saboter. Voici les rôles disponibles :
 
 1. **Double Pousse (Grow Booster) 🌿**
    - **Effet** : Ce rôle permet de doubler la vitesse de croissance des plantes lorsqu’elles sont arrosées.
