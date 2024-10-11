@@ -11,7 +11,7 @@
 - **Rôles aléatoires** : À chaque session, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
 - **Possibilité de mort des plantes** : Si une plante n’est pas arrosée régulièrement, elle peut se faner et mourir.
 - **Evolution du design en fonction de l'heure** : L'application passe en dark mode automatique dès le coucher du soleil, les plantes poussent aussi moins vite pendant la nuit.
-- **Points Journalier**: À chaque connexion on gagne des points, quand on arrose des plantes on gagne des points. 
+- **Points Journalier**: À chaque action (connexion, action sur les portes) on gagne des points, et on peut les utiliser dans la boutique. 
 
 
 ---
