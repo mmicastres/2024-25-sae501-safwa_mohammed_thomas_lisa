@@ -42,7 +42,17 @@ Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque
    - **Indication visuelle** : La plante se développe normalement, sans effets visuels spécifiques.
 
 ---
+# PLANTOPIA Actions and Points System
 
+| **Action**         | **Points Earned** |
+|--------------------|-------------------|
+| Get on the app      | 10 points         |
+| Water a plant       | 20 points         |
+| Sun Action          | 25 points         |
+| Dry Action          | 15 points         |
+| New plant           | 15 points         |
+
+---
 ## Mécanique de mort des plantes ⚰️
 
 Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 72 heures en temps réel), elle commence à se détériorer et peut mourir.
