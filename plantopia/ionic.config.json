@@ -1,0 +1,7 @@
+{
+  "name": "Plantopia",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "vue-vite"
+}
