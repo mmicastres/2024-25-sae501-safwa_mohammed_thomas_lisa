@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
 import ARScene from './components/ARScene.vue';
 
 export default {
@@ -6,12 +6,16 @@ export default {
     ARScene,
   },
 };
-</script>
+</script> -->
 
 <template>
-  <div id="app">
-    <ARScene />
-  </div>
+  <h1>Hello App!</h1>
+  <main>
+    <RouterLink to="/Inventory">Inventory</RouterLink>
+    <RouterLink to="/Shop">Shop</RouterLink>
+    <RouterLink to="/Leaderboard">Leaderboard</RouterLink>
+    <RouterView></RouterView>
+  </main>
 </template>
 
 <style>
@@ -20,7 +24,7 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #ffffff;
   margin-top: 60px;
 }
 </style>
