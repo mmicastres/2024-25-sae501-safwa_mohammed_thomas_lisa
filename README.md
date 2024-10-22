@@ -48,9 +48,7 @@ Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque
 Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 72 heures en temps réel), elle commence à se détériorer et peut mourir.
 
 ### Processus de détérioration :
-1. **Première étape** : La plante perd de la couleur, et ses feuilles jaunissent.
-2. **Deuxième étape** : Les feuilles se flétrissent, et la plante cesse de croître.
-3. **Mort** : Si la plante n'est pas arrosée après ces signes, elle meurt définitivement.
+- La plante possède 100hp, elle pert 12hp par jour, les actions des utilisateurs lui redonnent des hp lui permettant de rester en vie. Sans ces actions et une fois arrivé à 0hp la plante meurt et disparait.
 
 ### Récupération :
 Si la plante est arrosée avant sa mort complète, elle peut récupérer, mais sa croissance sera ralentie pendant un certain temps.
