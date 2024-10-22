@@ -1,7 +1,11 @@
 <template>
-  <ion-page>
+ <ion-page>
     <ion-header>
       <ion-toolbar>
+        <!-- Bouton retour -->
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/"></ion-back-button> <!-- Redirige vers la page d'accueil -->
+        </ion-buttons>
         <ion-title>Inventory</ion-title>
       </ion-toolbar>
     </ion-header>
@@ -28,7 +32,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton } from '@ionic/vue';
+import { IonPage,IonButtons,IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton } from '@ionic/vue';
 
 // Example inventory items
 const inventoryItems = ref([
