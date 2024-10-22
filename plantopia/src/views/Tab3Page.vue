@@ -2,8 +2,8 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-          <!-- Bouton retour -->
-          <ion-buttons slot="start">
+        <!-- Bouton retour -->
+        <ion-buttons slot="start">
           <ion-back-button defaultHref="/"></ion-back-button> <!-- Redirige vers la page d'accueil -->
         </ion-buttons>
         <ion-title>Leaderboard</ion-title>
@@ -11,12 +11,7 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <ion-header collapse="condense">
-        <ion-toolbar>
-          <ion-title size="large">Top Players</ion-title>
-        </ion-toolbar>
-      </ion-header>
-
+       <!-- Liste des personnes les mieux classés -->
       <ion-grid>
         <ion-row>
           <ion-col size="4">Rank</ion-col>
@@ -41,15 +36,15 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IonPage,IonButtons,IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton } from '@ionic/vue';
+import { IonPage, IonButtons, IonBackButton, IonRow, IonAvatar, IonCol, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from '@ionic/vue';
 
-// Exemple de données pour le leaderboard
+// Exemple de données pour le leaderboard avec des noms réalistes
 const leaderboard = ref([
-  { id: 1, name: 'Pokémon Yellow', score: 1500, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
-  { id: 2, name: 'Mega Man X', score: 1400, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
-  { id: 3, name: 'The Legend of Zelda', score: 1300, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
-  { id: 4, name: 'Pac-Man', score: 1200, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
-  { id: 5, name: 'Super Mario World', score: 1100, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
+  { id: 1, name: 'John Doe', score: 1500, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
+  { id: 2, name: 'Jane Smith', score: 1400, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
+  { id: 3, name: 'Carlos Santana', score: 1300, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
+  { id: 4, name: 'Anna Lee', score: 1200, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
+  { id: 5, name: 'Mark Spencer', score: 1100, avatar: 'https://ionicframework.com/docs/img/demos/avatar.svg' },
 ]);
 </script>
 
@@ -62,6 +57,7 @@ ion-col {
 }
 
 ion-item {
-  --background: transparent; /* Optionnel : pour un fond transparent sur les items */
+  --background: transparent;
+  /* Optionnel : pour un fond transparent sur les items */
 }
 </style>
