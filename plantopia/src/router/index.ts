@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import TabsPage from '../views/TabsPage.vue';
 import Home from '../views/Home.vue'; 
+import Leaderboard from '../views/Leaderboard.vue';
+import Settings from '../views/Settings.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -9,25 +11,29 @@ const routes: Array<RouteRecordRaw> = [
     component: Home, 
   },
   {
-    path: '/tabs/',
+    path: '/leaderboard',
+    component: Leaderboard, 
+  },
+  {
+    path: '/settings',
+    component: Settings, 
+  },
+  {
+    path: '/',
     component: TabsPage,
     children: [
       {
-        path: '',
-        redirect: '/tabs/tab1'
+        path: '', // Si aucun chemin n'est spécifié, redirige vers 'shop'
+        redirect: '/shop'
       },
       {
-        path: 'tab1',
-        component: () => import('@/views/Tab1Page.vue')
+        path: 'inventory', // Chemin en minuscules
+        component: () => import('@/views/Inventory.vue')
       },
       {
-        path: 'tab2',
-        component: () => import('@/views/Tab2Page.vue')
+        path: 'shop', // Chemin en minuscules
+        component: () => import('@/views/Shop.vue')
       },
-      {
-        path: 'tab3',
-        component: () => import('@/views/Tab3Page.vue')
-      }
     ]
   }
 ]

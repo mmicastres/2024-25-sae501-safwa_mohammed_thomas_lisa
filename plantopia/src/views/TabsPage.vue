@@ -3,13 +3,13 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
-        <ion-tab-button tab="tab1" href="inventory">
+        <ion-tab-button tab="tab1" href="/inventory">
           <ion-icon aria-hidden="true" :icon="library" />
           <ion-label>Inventory</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab2" href="shop">
-          <ion-icon aria-hidden="true" :icon="storefront" />
+        <ion-tab-button tab="tab2" href="/shop">
+          <ion-icon aria-hidden="true" :icon="storefront"></ion-icon>
           <ion-label>Shop</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
