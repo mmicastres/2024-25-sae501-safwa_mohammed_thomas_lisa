@@ -1,6 +1,14 @@
 /* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
 video {
-    position: relative !important;
-    z-index: -1 !important;
-  }
+  position: relative !important;
+  z-index: -1 !important;
+}
+
+:root {
+  --ion-color-new: #63C132 !important;
+  --ion-color-new-rgb: 99, 193, 50 !important;
+  --ion-color-new-contrast: #ffffff !important;
+  --ion-color-new-contrast-rgb: 255, 255, 255 !important;
+  --ion-color-new-shade: #57aa2c !important;
+}

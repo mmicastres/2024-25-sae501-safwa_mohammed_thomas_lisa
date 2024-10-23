@@ -11,30 +11,40 @@
     </ion-header>
 
     <ion-content :fullscreen="true">
-      <!-- Liste des items disponibles à l'achat -->
-      <ion-list>
-        <ion-item v-for="item in shopItems" :key="item.id">
-          <ion-label>
-            <h2>{{ item.name }}</h2> <!-- Nom de l'item -->
-            <p>Price: {{ item.price }} coins</p> <!-- Prix de l'item -->
-          </ion-label>
-          <ion-button slot="end" color="success">Buy</ion-button> <!-- Bouton d'achat -->
-        </ion-item>
-      </ion-list>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="6" v-for="item in shopItems" :key="item.id">
+            <ion-card>
+              <img alt="Item Image" :src="item.img" />
+              <ion-card-header>
+                <ion-card-title>{{ item.name }}</ion-card-title>
+                <ion-card-subtitle>{{item.description}}</ion-card-subtitle>
+              </ion-card-header>
+              <div style="display: flex; justify-content:right; align-items: right; padding: 16px;">
+                <ion-button color="new">                 
+                  {{ item.price }}
+                  <ion-icon slot="end" :icon="leaf"></ion-icon>
+                </ion-button>
+              </div>
+            </ion-card>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
     </ion-content>
   </ion-page>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IonPage, IonButtons, IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton } from '@ionic/vue';
+import { IonPage, IonButtons, IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel, IonButton, IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonGrid, IonRow, IonCol, IonIcon } from '@ionic/vue';
+import { heart,leaf } from 'ionicons/icons';
 
 // Données exemple pour les items du magasin
 const shopItems = ref([
-  { id: 1, name: 'Health Potion', price: 10 }, // Potion de santé
-  { id: 2, name: 'Mana Potion', price: 20 },  // Potion de mana
-  { id: 3, name: 'Sword', price: 5 },        // Épée
-  { id: 4, name: 'Shield', price: 15 }        // Bouclier
+  { id: 1, name: 'Health Potion', price: 10, description:'healthy behavior or whatever',img:'/resources/seed-newplant.png' }, // Potion de santé
+  { id: 2, name: 'Mana Potion', price: 20, description:'the stuff for your powers to work', img:'/resources/sun.png'},  // Potion de mana
+  { id: 3, name: 'Sword', price: 5, description:'all the fighters need their swords', img:'/resources/water.png'} ,// Épée
+  { id: 4, name: 'Shield', price: 15, description:'protect yourself so you wont die as fast', img:'/resources/croix.png'}    // Bouclier
 ]);
 </script>
 

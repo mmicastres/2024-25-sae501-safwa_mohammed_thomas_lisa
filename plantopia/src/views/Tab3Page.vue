@@ -36,7 +36,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
-import { IonPage, IonButtons, IonBackButton, IonRow, IonAvatar, IonCol, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel } from '@ionic/vue';
+import { IonPage, IonButtons, IonBackButton, IonRow, IonAvatar, IonCol, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonLabel,IonGrid} from '@ionic/vue';
 
 // Exemple de données pour le leaderboard avec des noms réalistes
 const leaderboard = ref([
