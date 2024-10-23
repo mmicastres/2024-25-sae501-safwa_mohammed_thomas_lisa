@@ -15,4 +15,10 @@
   --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb) !important;
   --ion-color-shade: var(--ion-color-new-shade) !important;
   --ion-color-tint: var(--ion-color-new-tint) !important;
+
+
+}
+video {
+  position: relative !important;
+  z-index: -1 !important;
 }
