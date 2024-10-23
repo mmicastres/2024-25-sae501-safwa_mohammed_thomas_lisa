@@ -1,3 +1,6 @@
+<!-- Possible uses <ion-icon name="qr-code"></ion-icon> -->
+
+
 <template>
   <ion-page>
     <ion-content fullscreen>
@@ -11,17 +14,17 @@
       </a-scene>
 
       <div class="menu-buttons">
-        <ion-button class="menu-btn top-left" href="/tabs/tab1" shape="round">
-          <ion-icon slot="icon-only" :icon="archive" />
+        <ion-button class="menu-btn top-right" href="settings" shape="round">
+          <ion-icon slot="icon-only" :icon="settings" />
         </ion-button>
 
-        <ion-button class="menu-btn top-right" href="/tabs/tab2" shape="round">
-          <ion-icon slot="icon-only" :icon="basket" />
+        <ion-button class="menu-btn bottom-left" href="shop" shape="round">
+          <ion-icon slot="icon-only" :icon="storefront"/>
         </ion-button>
 
         <!-- Bouton en bas à droite -->
-        <ion-button class="menu-btn bottom-right" href="/tabs/tab3" shape="round">
-          <ion-icon slot="icon-only" :icon="podiumSharp"></ion-icon>
+        <ion-button class="menu-btn bottom-right" href="leaderboard" shape="round">
+          <ion-icon slot="icon-only" :icon="trophy"></ion-icon>
         </ion-button>
       </div>
     </ion-content>
@@ -29,8 +32,9 @@
 </template>
 
 <script setup lang="ts">
-import { IonButton, IonIcon, IonPage, IonContent, IonHeader, IonToolbar, IonTitle } from '@ionic/vue';
-import { archive, basket, podiumSharp } from 'ionicons/icons';
+import { IonButton, IonIcon, IonPage, IonContent} from '@ionic/vue';
+import { settings, storefront, trophy } from 'ionicons/icons';
+
 
 AFRAME.registerComponent('rotation-reader', {
   tick: function () {
@@ -122,14 +126,14 @@ html {
   position: absolute;
 }
 
-.top-left {
-  top: 20px;
-  left: 20px;
-}
-
 .top-right {
   top: 20px;
   right: 20px;
+}
+
+.bottom-left {
+  bottom: 20px;
+  left: 20px;
 }
 
 .bottom-right {
