@@ -1,6 +1,18 @@
-/* For information on how to create your own theme, please see:
-http://ionicframework.com/docs/theming/ */
-video {
-    position: relative !important;
-    z-index: -1 !important;
-  }
+:root {
+  --ion-color-new: #63C132 !important;
+  --ion-color-new-rgb: 99,193,50 !important;
+  --ion-color-new-contrast: #ffffff !important;
+  --ion-color-new-contrast-rgb: 255,255,255 !important;
+  --ion-color-new-shade: #57aa2c !important;
+  --ion-color-new-tint: #73c747 !important;
+  --ion-font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+}
+
+.ion-color-new {
+  --ion-color-base: var(--ion-color-new) !important;
+  --ion-color-base-rgb: var(--ion-color-new-rgb) !important;
+  --ion-color-contrast: var(--ion-color-new-contrast) !important;
+  --ion-color-contrast-rgb: var(--ion-color-new-contrast-rgb) !important;
+  --ion-color-shade: var(--ion-color-new-shade) !important;
+  --ion-color-tint: var(--ion-color-new-tint) !important;
+}

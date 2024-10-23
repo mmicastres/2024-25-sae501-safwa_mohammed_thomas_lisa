@@ -17,6 +17,11 @@
           <ion-icon aria-hidden="true" :icon="podiumSharp"></ion-icon>
           <ion-label>Leaderboard</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="tab4" href="/tabs/tab4">
+          <ion-icon aria-hidden="true" :icon="person"></ion-icon>
+          <ion-label>User Page</ion-label>
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
@@ -24,5 +29,5 @@
 
 <script setup lang="ts">
 import { IonTabBar, IonTabButton, IonTabs, IonLabel, IonIcon, IonPage, IonRouterOutlet } from '@ionic/vue';
-import { archive, basket , podiumSharp } from 'ionicons/icons';
+import { archive, basket , podiumSharp,person} from 'ionicons/icons';
 </script>

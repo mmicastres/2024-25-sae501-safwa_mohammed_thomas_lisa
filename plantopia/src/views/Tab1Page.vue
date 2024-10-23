@@ -18,7 +18,7 @@
             <h2>{{ item.name }}</h2> <!-- Nom de l'item -->
             <p>Quantity: {{ item.quantity }}</p> <!-- Quantité de l'item -->
           </ion-label>
-          <ion-button slot="end" color="primary">Use</ion-button> <!-- Bouton pour "utiliser" l'item -->
+          <ion-button slot="end" color="new">Use</ion-button> <!-- Bouton pour "utiliser" l'item -->
         </ion-item>
       </ion-list>
     </ion-content>
