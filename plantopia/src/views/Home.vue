@@ -1,14 +1,18 @@
 <template>
   <ion-page>
     <ion-content fullscreen>
-      <!-- Instructions pour l'utilisateur -->
-      <div id="instructions">Cliquez sur l'écran pour placer le duck</div>
+      <!-- Instructions for the User -->
+      <div class="Scan">
+        <img src="../../resources/Group1.svg" alt="Scan icon" width="80"/>
+        <div id="instructions">Scannez l'environnement</div>
+      </div>
 
-      <iframe src="../../aframe-ar.html" frameborder="0" style="width: 100%; height: 100%; border: none;"
-        allow="camera; fullscreen">
-      </iframe>
+      <!-- Fullscreen iframe for AR content -->
+      <iframe src="../../aframe-ar.html" frameborder="0"
+        style="border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"
+        allow="camera; fullscreen"></iframe>
 
-
+      <!-- Menu Buttons -->
       <div class="menu-buttons">
         <ion-button class="menu-btn top-right" href="settings" shape="round">
           <ion-icon slot="icon-only" :icon="settings" />
@@ -33,7 +37,9 @@ import { settings, storefront, trophy } from 'ionicons/icons';
 
 <style scoped>
 body,
-html {
+html,
+ion-page,
+ion-content {
   margin: 0;
   padding: 0;
   overflow: hidden;
@@ -41,24 +47,36 @@ html {
   height: 100%;
 }
 
+/* Styling for Instructions Container */
 #instructions {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  right: 0;
+  margin-top: 10px;
   text-align: center;
   color: white;
   font-family: Arial, sans-serif;
-  z-index: 10;
   text-shadow: 0 0 5px black;
+  z-index: 10;
 }
 
+/* .Scan Container Styling */
+.Scan {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+}
+
+/* Menu Buttons Container */
 .menu-buttons {
   position: absolute;
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
+/* Button Positioning */
 .menu-btn {
   position: absolute;
 }
@@ -78,14 +96,16 @@ html {
   right: 20px;
 }
 
+/* Button Padding */
 ion-button {
   --padding-top: 10px;
   --padding-bottom: 10px;
 }
 
-a-scene {
-  width: 100vw;
-  height: 100vh;
+/* Fullscreen iframe styling */
+iframe {
+  width: 100%;
+  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
