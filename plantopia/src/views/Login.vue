@@ -41,7 +41,6 @@ import router from '../router';
 const isLogin = ref(true);
 const form = ref({
     username: '',
-    email: '',
     password: ''
 });
 const errorMessage = ref('');
@@ -56,7 +55,6 @@ function toggleAuthMode() {
 // Function to clear the form fields
 function clearForm() {
     form.value.username = '';
-    form.value.email = '';
     form.value.password = '';
 }
 
@@ -68,14 +66,23 @@ async function handleSubmit() {
         const response = await axios.post(apiUrl, form.value);
         console.log('Response:', response.data);
 
+        // Si l'API renvoie un token
         if (response.data.token) {
             localStorage.setItem('token', response.data.token);
             router.push('/home');
         }
     } catch (error) {
-        console.log(error)
+        // Gérer l'affichage de l'erreur
+        if (error.response && error.response.data) {
+            // Afficher le message d'erreur du serveur
+            errorMessage.value = error.response.data.error || 'Une erreur inconnue s\'est produite';
+        } else {
+            errorMessage.value = 'Erreur de connexion au serveur';
+        }
+        console.log('Error:', error);
     }
 }
+
 </script>
 
 <style scoped>

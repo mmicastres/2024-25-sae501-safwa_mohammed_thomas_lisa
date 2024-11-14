@@ -65,11 +65,9 @@ def get(user_id):
     return User.query.get(int(user_id))
 
 
-
-
 @app.route('/register', methods=['POST'])
 def register_route():
-    data = request.get_json()
+    data = request.json
     username = data.get('username')
     password = data.get('password')
     exists = User.query.filter_by(username=username).first()
@@ -93,9 +91,9 @@ def register_route():
     return jsonify({'message':'User registered successfully.'}), 201
 
 
-@app.route('/login', methods=['POST'])
-def login_route():
-    data = request.get_json()
+@app.route('/signin', methods=['POST'])
+def login_user_route():
+    data = request.json
     username = data.get('username')
     password = data.get('password')
     exists = User.query.filter_by(username=username).first()
@@ -104,7 +102,7 @@ def login_route():
         return jsonify({'error':'User not found.'}), 404
 
     if exists and check_password_hash(exists.password, password):
-        access_token = create_access_token(identity=exists.id)
+        access_token = create_access_token(identity=exists.id, fresh=True)
         refresh_token = create_refresh_token(identity=exists.id)
         return jsonify({'access_token':access_token, 'refresh_token':refresh_token}), 200
     
@@ -113,7 +111,7 @@ def login_route():
 
 @app.route('/refresh_token', methods=['POST'])
 @jwt_required(refresh=True)
-def create_refresh_token():
+def create_refresh():
     user = get_jwt_identity()
     new_token = create_access_token(identity=user, fresh=False)
     return jsonify({'access_token':new_token}), 200
@@ -151,4 +149,4 @@ def test_shop_route():
 
 
 if __name__ == '__main__':
-    app.run(port=8093, debug=True, host='0.0.0.0')
+    app.run(port=8095, debug=True, host='0.0.0.0')

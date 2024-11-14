@@ -4,7 +4,7 @@ import TabsPage from '../views/TabsPage.vue';
 import Home from '../views/Home.vue'; 
 import Leaderboard from '../views/Leaderboard.vue';
 import Settings from '../views/Settings.vue';
-import Login from '@/views/Login.vue';
+import Login from '../views/Login.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -33,11 +33,11 @@ const routes: Array<RouteRecordRaw> = [
       },
       {
         path: 'inventory', // Chemin en minuscules
-        component: () => import('@/views/Inventory.vue')
+        component: () => import('../views/Inventory.vue')
       },
       {
         path: 'shop', // Chemin en minuscules
-        component: () => import('@/views/Shop.vue')
+        component: () => import('../views/Shop.vue')
       },
     ]
   }
