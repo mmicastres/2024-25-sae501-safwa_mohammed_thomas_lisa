@@ -31,7 +31,7 @@
     </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
 import axios from 'axios';
 import { IonButton, IonInput, IonLabel, IonPage, IonContent } from '@ionic/vue';

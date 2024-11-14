@@ -3,7 +3,7 @@
     <ion-header>
       <ion-toolbar>
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button>
+          <ion-back-button defaultHref="/home"></ion-back-button>
         </ion-buttons>
         <ion-title>Shop</ion-title>
       </ion-toolbar>
@@ -44,22 +44,19 @@ const shopItems = ref([
 ]);
 
 
-const options = {
-  headers: {
-    'Authorization': 'Bearer your_token_here'
-  }
-};
+// const options = {
+//   headers: {
+//     'Authorization': 'Bearer your_token_here'
+//   }
+// };
 
-axios.get('https://test.nanodata.cloud/', options)
-  .then(response => {
-    console.log(response.data);
-  })
-  .catch(error => {
-    console.error('Error fetching data:', error);
-  });
-
-
-
+// axios.get('https://test.nanodata.cloud/', options)
+//   .then(response => {
+//     console.log(response.data);
+//   })
+//   .catch(error => {
+//     console.error('Error fetching data:', error);
+//   });
 </script>
 
 <style scoped>

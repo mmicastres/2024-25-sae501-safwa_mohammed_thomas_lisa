@@ -4,7 +4,7 @@
       <ion-toolbar>
        <!-- Bouton retour vers la page d'accueil -->
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/"></ion-back-button> <!-- Redirection vers la page d'accueil -->
+          <ion-back-button defaultHref="/home"></ion-back-button> <!-- Redirection vers la page d'accueil -->
         </ion-buttons>
         <ion-title>Inventory</ion-title>
       </ion-toolbar>
