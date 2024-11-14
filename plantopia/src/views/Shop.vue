@@ -33,6 +33,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 import { IonPage, IonImg, IonButtons, IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonAvatar, IonLabel, IonButton } from '@ionic/vue';
+import axios from 'axios';
 
 const shopItems = ref([
   { id: 1, number: 20, name: 'Seed', description: 'description', priceText: 'WATCH', icon: '/resources/seed-newplant.png' },
@@ -41,6 +42,24 @@ const shopItems = ref([
   { id: 4, number: 20, name: 'Seed', description: 'description', priceText: '$14.99', icon: '/resources/seed-newplant.png' },
   { id: 5, number: 20, name: 'Sun', description: 'description', priceText: '$30.99', icon: '/resources/sun.png' }
 ]);
+
+
+const options = {
+  headers: {
+    'Authorization': 'Bearer your_token_here'
+  }
+};
+
+axios.get('https://test.nanodata.cloud/', options)
+  .then(response => {
+    console.log(response.data);
+  })
+  .catch(error => {
+    console.error('Error fetching data:', error);
+  });
+
+
+
 </script>
 
 <style scoped>
@@ -53,7 +72,6 @@ const shopItems = ref([
 
 .item-number,
 .item-name {
-  margin-right: 10px; /* Space between number and name */
+  margin-right: 10px;
 }
-
 </style>

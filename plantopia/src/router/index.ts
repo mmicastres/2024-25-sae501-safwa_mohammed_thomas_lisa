@@ -4,11 +4,12 @@ import TabsPage from '../views/TabsPage.vue';
 import Home from '../views/Home.vue'; 
 import Leaderboard from '../views/Leaderboard.vue';
 import Settings from '../views/Settings.vue';
+import Login from '@/views/Login.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
     path: '/',
-    component: Home, 
+    component: Login, 
   },
   {
     path: '/leaderboard',
@@ -19,7 +20,11 @@ const routes: Array<RouteRecordRaw> = [
     component: Settings, 
   },
   {
-    path: '/',
+    path: '/home',
+    component: Home, 
+  },
+  {
+    path: '/home',
     component: TabsPage,
     children: [
       {

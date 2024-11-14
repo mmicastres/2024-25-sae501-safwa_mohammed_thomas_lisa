@@ -50,12 +50,12 @@ export default defineComponent({
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
 
     // Add or remove the "ion-palette-dark" class on the html element
-    const toggleDarkPalette = (shouldAdd) => {
+    const toggleDarkPalette = (shouldAdd: boolean | undefined) => {
       document.documentElement.classList.toggle('ion-palette-dark', shouldAdd);
     };
 
     // Check/uncheck the toggle and update the palette based on isDark
-    const initializeDarkPalette = (isDark) => {
+    const initializeDarkPalette = (isDark: boolean ) => {
       paletteToggle.value = isDark;
       toggleDarkPalette(isDark);
     };
