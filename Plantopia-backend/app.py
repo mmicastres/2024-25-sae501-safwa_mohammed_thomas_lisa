@@ -130,6 +130,16 @@ def test_route():
 @jwt_required()
 def test_users_route():
     users = User.query.all()
+    senatized = []
+    for user in users:
+        senatized.append({
+            'id':user.id,
+            'username':user.username,
+            'points':user.points,
+            'plants':[plant.name for plant in user.plants],
+            'powerups':[powerup.power for powerup in user.powerups],
+            'inventory':[inventory.item_type for inventory in user.inventory]
+        })
     return jsonify({'users':users}), 200
 
 
