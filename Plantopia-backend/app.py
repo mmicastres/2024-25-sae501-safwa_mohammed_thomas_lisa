@@ -126,6 +126,19 @@ def test_route():
     user = User.query.get(user_id)
     return jsonify({'user':user}), 200
 
+@app.route('/test-users', methods=['GET'])
+@jwt_required()
+def test_users_route():
+    users = User.query.all()
+    return jsonify({'users':users}), 200
+
+
+@app.route('/test-shop', methods=['GET'])
+@jwt_required()
+def test_shop_route():
+    shop_items = Shop.query.all()
+    return jsonify({'shop_items':shop_items}), 200
+
 
 if __name__ == '__main__':
     app.run(port=8093, debug=True, host='0.0.0.0')
