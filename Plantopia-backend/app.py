@@ -90,6 +90,7 @@ def register_route():
     )
     db.session.add(new_user)
     db.session.commit()
+    return jsonify({'message':'User registered successfully.'}), 201
 
 
 @app.route('/login', methods=['POST'])
