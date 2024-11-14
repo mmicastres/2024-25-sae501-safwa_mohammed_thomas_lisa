@@ -36,8 +36,8 @@ import { ref } from 'vue';
 import axios from 'axios';
 import { IonButton, IonInput, IonLabel,IonPage,IonContent } from '@ionic/vue'; 
 import { navigate } from 'ionicons/icons';
-import router from '@/router';
-
+import { useRouter } from 'vue-router';
+import router from '../router';
 const isLogin = ref(true);
 const form = ref({
     username: '',
