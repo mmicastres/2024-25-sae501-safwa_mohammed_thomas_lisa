@@ -10,7 +10,6 @@
 - **Arrosage virtuel** : Arrosez votre plante pour encourager sa croissance.
 - **Rôles aléatoires** : À chaque session, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
 - **Possibilité de mort des plantes** : Si une plante n’est pas arrosée régulièrement, elle peut se faner et mourir.
-- **Evolution du design en fonction de l'heure** : L'application passe en dark mode automatique dès le coucher du soleil, les plantes poussent aussi moins vite pendant la nuit.
 - **Points Journalier**: À chaque action (connexion, action sur les portes) on gagne des points, et on peut les utiliser dans la boutique. 
 
 
@@ -24,19 +23,8 @@ Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque
    - **Effet** : Ce rôle permet de doubler la vitesse de croissance des plantes lorsqu’elles sont arrosées.
    - **Action** : Chaque arrosage par le joueur avec ce rôle accélère la croissance de la plante, la faisant évoluer deux fois plus vite.
    - **Indication visuelle** : Un halo vert brillant apparaît autour de la plante.
-
-2. **Saboteur (Saboteur) 🛑**
-   - **Effet** : Sabote la croissance des plantes.
-   - **Action** : Lorsqu'il arrose une plante, sa croissance ralentit ou recule, et elle peut perdre des feuilles.
-   - **Indication visuelle** : Feuilles flétries ou changement de couleur (feuilles brunissantes).
-   - **Objectif** : Ralentir la croissance des autres plantes sans se faire remarquer.
-
-3. **Protecteur (Guardian) 🛡️**
-   - **Effet** : Protège une plante contre la mort ou les effets négatifs.
-   - **Action** : En arrosant une plante, le protecteur empêche cette plante de mourir ou d'être sabotée pendant un certain temps (par exemple, 24 heures virtuelles).
-   - **Indication visuelle** : La plante protégée brille avec un bouclier lumineux.
-
-4. **Neutre (Neutral) 🌾**
+   - 
+2. **Neutre (Neutral) 🌾**
    - **Effet** : Ce rôle n'a aucun effet spécial sur les plantes.
    - **Action** : Le joueur peut arroser les plantes normalement sans influence sur leur croissance.
    - **Indication visuelle** : La plante se développe normalement, sans effets visuels spécifiques.
@@ -49,7 +37,6 @@ Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque
 | Get on the app      | 10 points         |
 | Water a plant       | 20 points         |
 | Sun Action          | 25 points         |
-| Dry Action          | 15 points         |
 | New plant           | 15 points         |
 
 ---
