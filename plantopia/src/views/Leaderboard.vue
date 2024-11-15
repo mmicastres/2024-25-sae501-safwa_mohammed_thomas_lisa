@@ -45,8 +45,6 @@
   </ion-page>
 </template>
 
-
-
 <script setup lang="ts">
 import axios from 'axios';
 import { ref, onMounted } from 'vue';
@@ -64,39 +62,46 @@ import {
   IonLabel
 } from '@ionic/vue';
 
+// Déclarations des variables réactives
 const leaderboard = ref<{ id: number, username: string, points: number }[]>([]);
 const currentUserRank = ref<number | null>(null);
 const currentUser = ref<{ id: number; username: string; points: number }>({ id: 0, username: "", points: 0 });
 
-const options = {
-  headers: {
-    Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJmcmVzaCI6dHJ1ZSwiaWF0IjoxNzMxNjc4OTc5LCJqdGkiOiI2ODIzZjhkNS04NjI4LTQ3ZWQtYjFkMy1mNTJlZGZhYWFkMmQiLCJ0eXBlIjoiYWNjZXNzIiwic3ViIjoxOCwibmJmIjoxNzMxNjc4OTc5LCJjc3JmIjoiMjEyMTI4ZWUtYzJiNC00MWQ4LWE3NjQtZDMzMDQ1NWRhYzFmIiwiZXhwIjoxNzM0MjcwOTc5fQ.49G0BDAWA6KYSdocMBzZs1V7_arPC0lrJTmSH2XsDsE"
-  }
-};
-
 onMounted(() => {
-  axios
+  const bearer = localStorage.getItem('accessToken');
+  if (!bearer) {
+    alert('Token de connexion manquant.');
+    return;
+  }
 
+  const options = {
+    headers: {
+      Authorization: `Bearer ${bearer}`,
+    },
+  };
+
+  // Récupérer les données de l'utilisateur actuel
+  axios
     .get('https://test.nanodata.cloud/test', options)
     .then((response) => {
-      // Récupérer les données de l'utilisateur connecté
       const userData = response.data;
       currentUser.value = {
         id: userData.id,
-        username: userData.username,  // Nom de l'utilisateur
-        points: userData.points || 0  // Points de l'utilisateur (s'il y en a)
+        username: userData.username,
+        points: userData.points || 0
       };
 
+      // Ensuite, récupérer la liste des utilisateurs
       return axios.get('https://test.nanodata.cloud/test-users', options);
     })
     .then((response) => {
-      // Extraire et trier les utilisateurs par points décroissants
+      // Trier les utilisateurs par points décroissants
       leaderboard.value = response.data.users
         .map((user: any) => ({
-          username: user.username,  // Nom d'utilisateur
-          points: user.points || 0  // Points de l'utilisateur (par défaut 0)
+          username: user.username,
+          points: user.points || 0
         }))
-        .sort((a: any, b: any) => b.points - a.points);  // Trier par points décroissants
+        .sort((a: any, b: any) => b.points - a.points);
 
       // Trouver le classement de l'utilisateur actuel
       currentUserRank.value = leaderboard.value.findIndex(user => user.username === currentUser.value.username) + 1;

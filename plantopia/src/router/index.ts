@@ -32,7 +32,7 @@ const routes: Array<RouteRecordRaw> = [
         component: () => import('../views/Shop.vue') // Load Shop.vue directly
       },
       {
-        path: 'inventory', // Child route for '/shop/inventory'
+        path: '/inventory', // Child route for '/shop/inventory'
         component: () => import('../views/Inventory.vue')
       }
     ]
