@@ -12,10 +12,6 @@ const routes: Array<RouteRecordRaw> = [
     component: Login,
   },
   {
-    path: '/home',
-    component: Home,
-  },
-  {
     path: '/leaderboard',
     component: Leaderboard,
   },
@@ -24,23 +20,24 @@ const routes: Array<RouteRecordRaw> = [
     component: Settings,
   },
   {
-    path: '/',
+    path: '/home',
+    component: Home,
+  },
+  {
+    path: '/shop',
     component: TabsPage,
     children: [
       {
         path: '', 
-        redirect: 'shop'
+        component: () => import('../views/Shop.vue') // Load Shop.vue directly
       },
       {
-        path: '/inventory',
+        path: 'inventory', // Child route for '/shop/inventory'
         component: () => import('../views/Inventory.vue')
-      },
-      {
-        path: '/shop',
-        component: () => import('../views/Shop.vue')
-      },
+      }
     ]
   }
+
 ]
 
 const router = createRouter({

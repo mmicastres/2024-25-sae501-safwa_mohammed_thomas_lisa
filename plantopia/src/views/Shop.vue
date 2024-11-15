@@ -14,15 +14,15 @@
       <ion-list class="shop-list">
         <ion-item v-for="item in shopItems" :key="item.id" class="shop-item">
           <ion-avatar slot="start">
-            <ion-img :src="item.icon" class="item-icon" />
+            <!-- <ion-img :src="item.icon" class="item-icon" /> -->
           </ion-avatar>
           <ion-label class="item-details">
-            <span class="item-number">{{ item.number }}</span>
-            <span class="item-name">{{ item.name }}</span>
-            <p>{{ item.description }}</p>
+            <!-- <span class="item-number">{{ item.number }}</span> -->
+            <span class="item-name">{{ item.item_name }}</span>
+            <p>{{ item.item_type }}</p>
           </ion-label>
           <ion-button color="success" class="purchase-button">
-            {{ item.priceText }}
+            {{ item.price }}
           </ion-button>
         </ion-item>
       </ion-list>
@@ -31,32 +31,48 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
-import { IonPage, IonImg, IonButtons, IonBackButton, IonHeader, IonToolbar, IonTitle, IonContent, IonList, IonItem, IonAvatar, IonLabel, IonButton } from '@ionic/vue';
+import { ref, onMounted } from 'vue';
 import axios from 'axios';
+import {
+  IonPage,
+  IonButtons,
+  IonBackButton,
+  IonHeader,
+  IonToolbar,
+  IonTitle,
+  IonContent,
+  IonList,
+  IonItem,
+  IonLabel,
+  IonAvatar,
+  IonButton,
+} from '@ionic/vue';
 
-const shopItems = ref([
-  { id: 1, number: 20, name: 'Seed', description: 'description', priceText: 'WATCH', icon: '/resources/seed-newplant.png' },
-  { id: 2, number: 20, name: 'Sun', description: 'description', priceText: '$2.99', icon: '/resources/sun.png' },
-  { id: 3, number: 20, name: 'Water', description: 'description', priceText: '$7.99', icon: '/resources/water.png' },
-  { id: 4, number: 20, name: 'Seed', description: 'description', priceText: '$14.99', icon: '/resources/seed-newplant.png' },
-  { id: 5, number: 20, name: 'Sun', description: 'description', priceText: '$30.99', icon: '/resources/sun.png' }
-]);
+interface ShopItem {
+  id: number;
+  item_name: string;
+  item_type: string;
+  price: number;
+}
 
+const shopItems = ref<ShopItem[]>([]);
 
-// const options = {
-//   headers: {
-//     'Authorization': 'Bearer your_token_here'
-//   }
-// };
+onMounted(async () => {
+  const bearer = localStorage.getItem('token');
+  const options = {
+    headers: {
+      Authorization: `Bearer ${bearer}`,
+    },
+  };
 
-// axios.get('https://test.nanodata.cloud/', options)
-//   .then(response => {
-//     console.log(response.data);
-//   })
-//   .catch(error => {
-//     console.error('Error fetching data:', error);
-//   });
+  try {
+    const response = await axios.get('https://test.nanodata.cloud/test-shop', options);
+    console.log(response.data)
+    shopItems.value = response.data.shop_items;
+  } catch (error) {
+    console.error('Error fetching shop items:', error);
+  }
+});
 </script>
 
 <style scoped>
@@ -64,8 +80,6 @@ const shopItems = ref([
   display: flex;
   align-items: center;
 }
-
-
 
 .item-number,
 .item-name {

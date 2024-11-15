@@ -4,7 +4,7 @@
       <ion-toolbar>
         <!-- Bouton retour -->
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/home" />
+          <ion-back-button defaultHref="/home" /> <!-- Redirige vers la page d'accueil -->
         </ion-buttons>
         <ion-title>Leaderboard</ion-title>
       </ion-toolbar>
