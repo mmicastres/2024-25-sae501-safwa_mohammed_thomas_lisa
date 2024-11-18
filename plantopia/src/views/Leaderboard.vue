@@ -19,6 +19,10 @@
             <p>{{ currentUserRank || "N/A" }}</p> <!-- Affiche le rang -->
           </div>
           <div class="followings">
+            <h3>Name</h3>
+            <p>{{ currentUser.username }}</p> <!-- Affiche le rang -->
+          </div>
+          <div class="followings">
             <h3>Points</h3>
             <p>{{ currentUser.points }}</p> <!-- Affiche les points -->
           </div>
