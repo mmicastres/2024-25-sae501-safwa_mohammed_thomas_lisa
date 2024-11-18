@@ -1,18 +1,12 @@
 <template>
   <ion-page>
     <ion-content fullscreen>
-      <!-- Instructions for the User -->
-      <div class="Scan">
-        <img src="../../resources/Group1.svg" alt="Scan icon" width="80"/>
-        <div id="instructions">Scannez l'environnement</div>
-      </div>
-
-      <!-- Fullscreen iframe for AR content -->
+       <!-- Fullscreen iframe pour contenu AR -->
       <iframe src="../../aframe-ar.html" frameborder="0"
         style="border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"
         allow="camera; fullscreen"></iframe>
- 
-      <!-- Menu Buttons -->
+
+      <!-- Boutons du menu -->
       <div class="menu-buttons">
         <ion-button class="menu-btn top-right" href="settings" shape="round">
           <ion-icon slot="icon-only" :icon="settings" />
@@ -31,11 +25,26 @@
 </template>
 
 <script setup lang="ts">
+import { ref } from 'vue';
 import { IonButton, IonIcon, IonPage, IonContent } from '@ionic/vue';
 import { settings, storefront, trophy } from 'ionicons/icons';
+
+const isMarkerFound = ref(false);
+
+// Fonction appelée lorsqu'un marqueur est trouvé
+function onMarkerFound() {
+  isMarkerFound.value = true;
+  console.log("Marqueur AR détecté !");
+  // Enlève la classe blink si le marqueur est trouvé
+  const scanElement = document.querySelector('.scan');
+  if (scanElement) {
+    scanElement.classList.remove('blink');
+  }
+}
 </script>
 
 <style scoped>
+/* 1. Styles généraux */
 body,
 html,
 ion-page,
@@ -47,36 +56,14 @@ ion-content {
   height: 100%;
 }
 
-/* Styling for Instructions Container */
-#instructions {
-  margin-top: 10px;
-  text-align: center;
-  color: white;
-  font-family: Arial, sans-serif;
-  text-shadow: 0 0 5px black;
-  z-index: 10;
-}
-
-/* .Scan Container Styling */
-.Scan {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-}
-
-/* Menu Buttons Container */
+/* 3. Menu Buttons */
 .menu-buttons {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
-/* Button Positioning */
+/* 4. Position des boutons */
 .menu-btn {
   position: absolute;
 }
@@ -96,13 +83,13 @@ ion-content {
   right: 20px;
 }
 
-/* Button Padding */
+/* 5. Padding des boutons */
 ion-button {
   --padding-top: 10px;
   --padding-bottom: 10px;
 }
 
-/* Fullscreen iframe styling */
+/* 6. Styles de l'iframe */
 iframe {
   width: 100%;
   height: 100%;

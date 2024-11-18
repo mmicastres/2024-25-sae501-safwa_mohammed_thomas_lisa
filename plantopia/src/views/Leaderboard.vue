@@ -29,8 +29,9 @@
       <section>
         <ion-grid>
           <ion-list :inset="true">
-            <ion-item :class="{ 'current-user': user.id === currentUser.id }"
-              v-for="(user, index) in leaderboard.slice(0, 10)" :key="index" lines="none">
+            <ion-item 
+              v-for="(user, index) in leaderboard.slice(0, 10)" 
+              :key="index" lines="none">
               <ion-label>
                 <span class="rank-badge">{{ index + 1 }}</span>
                 {{ user.username }}
@@ -43,6 +44,7 @@
     </ion-content>
   </ion-page>
 </template>
+
 
 <script setup lang="ts">
 import axios from 'axios';
@@ -114,10 +116,8 @@ ion-content {
   --background: url('../../resources/backgroundLead.png') no-repeat center center / cover;
 }
 
-
 .transparent-toolbar {
   --background: transparent;
-  /* --box-shadow: none; */
 }
 
 ion-back-button {

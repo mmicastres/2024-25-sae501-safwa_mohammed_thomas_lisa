@@ -58,7 +58,7 @@ interface ShopItem {
 const shopItems = ref<ShopItem[]>([]);
 
 onMounted(async () => {
-  const bearer = localStorage.getItem('accessToken');
+  const bearer = localStorage.getItem('token');
   const options = {
     headers: {
       Authorization: `Bearer ${bearer}`,
