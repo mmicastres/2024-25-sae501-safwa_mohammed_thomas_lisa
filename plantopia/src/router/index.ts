@@ -5,10 +5,11 @@ import Home from '../views/Home.vue';
 import Leaderboard from '../views/Leaderboard.vue';
 import Settings from '../views/Settings.vue';
 import Login from '../views/Login.vue';
+import FirstPage from '../views/FirstPage.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: '/',
+    path: '/login',
     component: Login,
   },
   {
@@ -24,15 +25,19 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
+    path: '/',
+    component: FirstPage,
+  },
+  {
     path: '/shop',
     component: TabsPage,
     children: [
       {
         path: '', 
-        component: () => import('../views/Shop.vue') // Load Shop.vue directly
+        component: () => import('../views/Shop.vue') 
       },
       {
-        path: '/inventory', // Child route for '/shop/inventory'
+        path: '/inventory', 
         component: () => import('../views/Inventory.vue')
       }
     ]
