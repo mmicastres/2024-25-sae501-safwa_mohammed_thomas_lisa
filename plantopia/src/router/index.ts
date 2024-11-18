@@ -4,8 +4,8 @@ import TabsPage from '../views/TabsPage.vue';
 import Home from '../views/Home.vue';
 import Leaderboard from '../views/Leaderboard.vue';
 import Settings from '../views/Settings.vue';
-import Login from '../views/Login.vue';
 import FirstPage from '../views/FirstPage.vue';
+import Login from '../views/Login.vue';
 
 const routes: Array<RouteRecordRaw> = [
   {

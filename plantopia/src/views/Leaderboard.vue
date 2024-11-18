@@ -65,6 +65,7 @@ import {
   IonLabel
 } from '@ionic/vue';
 import { Preferences } from '@capacitor/preferences';
+import api from '../api';
 // Déclarations des variables réactives
 const leaderboard = ref<{ id: number, username: string, points: number }[]>([]);
 const currentUserRank = ref<number | null>(null);
@@ -80,7 +81,7 @@ onMounted(async () => {
   };
 
   // Récupérer les données de l'utilisateur actuel
-  axios
+  api
     .get('https://test.nanodata.cloud/test', options)
     .then((response) => {
       const userData = response.data;
@@ -91,7 +92,7 @@ onMounted(async () => {
       };
 
       // Ensuite, récupérer la liste des utilisateurs
-      return axios.get('https://test.nanodata.cloud/test-users', options);
+      return api.get('https://test.nanodata.cloud/test-users', options);
     })
     .then((response) => {
       // Trier les utilisateurs par points décroissants

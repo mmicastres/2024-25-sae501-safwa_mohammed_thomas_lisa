@@ -39,12 +39,15 @@
     </ion-page>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios';
 import { IonButton, IonInput, IonLabel, IonPage, IonContent, IonGrid, IonRow, IonCol, toastController } from '@ionic/vue';
 import router from '../router';
 import { saveToken } from '../../capacitorPrefer';
+import api from '../api'; 
+import { Preferences } from '@capacitor/preferences';
+
 
 const isLogin = ref(true);
 const form = ref({
@@ -64,11 +67,10 @@ function clearForm() {
     form.value.password = '';
 }
 
-async function presentToast(message, position = 'middle') {
+async function presentToast(message: string, position = 'middle') {
     const toast = await toastController.create({
         message,
         duration: 1500,
-        position
     });
     toast.present();
 }
@@ -77,13 +79,17 @@ async function handleSubmit() {
     const apiUrl = isLogin.value ? 'https://test.nanodata.cloud/signin' : 'https://test.nanodata.cloud/register';
 
     try {
-        const response = await axios.post(apiUrl, form.value);
+        const response = await api.post(apiUrl, form.value);
+        const { access_token, refresh_token } = response.data;
         if (response.data.access_token) {
-            await saveToken(response.data.access_token);
-            router.push('/home');
+            console.log('Access token received:', access_token);  // Log token for debugging
+            await Preferences.set({ key: 'access_token', value: access_token });
+            await Preferences.set({ key: 'refresh_token', value: refresh_token });
+            router.replace('/home');
         }
-    } catch (error) {
+    } catch (error: any) {
         if (error.response && error.response.data) {
+            console.log('Error during submission:', error);  // Log full error for debugging
             errorMessage.value = error.response.data.error || 'Une erreur inconnue s\'est produite';
             await presentToast(errorMessage.value, 'middle');
         } else if (error.response && error.response.status === 401) {

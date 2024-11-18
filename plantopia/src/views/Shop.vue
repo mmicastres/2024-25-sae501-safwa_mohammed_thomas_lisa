@@ -49,13 +49,14 @@ import {
   IonButton,
 } from '@ionic/vue';
 import { Preferences } from '@capacitor/preferences';
+import api from '../api';
 
 interface ShopItem {
   id: number;
   item_name: string;
   item_type: string;
   price: number;
-  image: string;  // Add an image field for each product
+  image: string;  
 }
 
 const shopItems = ref<ShopItem[]>([]);
@@ -69,11 +70,10 @@ onMounted(async () => {
   };
 
   try {
-    const response = await axios.get('https://test.nanodata.cloud/test-shop', options);
-    // Assuming each product in the response contains an image field
+    const response = await api.get('https://test.nanodata.cloud/test-shop', options);
     shopItems.value = response.data.shop_items.map((item: any) => ({
       ...item,
-      image: item.image || 'https://via.placeholder.com/150' // Fallback image if no image is provided
+      image: item.image || 'https://via.placeholder.com/150' 
     }));
   } catch (error) {
     console.error('Error fetching shop items:', error);
