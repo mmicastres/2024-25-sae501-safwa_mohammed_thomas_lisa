@@ -9,26 +9,28 @@
       </ion-toolbar>
     </ion-header>
 
-    <ion-content :fullscreen="true" class="shop-content">
-      <!-- Shop Items List -->
-      <ion-list class="shop-list">
-        <ion-item v-for="item in shopItems" :key="item.id" class="shop-item">
-          <ion-avatar slot="start">
-            <!-- <ion-img :src="item.icon" class="item-icon" /> -->
-          </ion-avatar>
-          <ion-label class="item-details">
-            <!-- <span class="item-number">{{ item.number }}</span> -->
-            <span class="item-name">{{ item.item_name }}</span>
-            <p>{{ item.item_type }}</p>
-          </ion-label>
-          <ion-button color="success" class="purchase-button">
-            {{ item.price }}
+    <!-- Content -->
+    <ion-content fullscreen>
+      <!-- Produits -->
+      <div class="products-section">
+        <div class="product-list">
+          <ion-card v-for="product in shopItems" :key="product.id" class="product-card">
+            <img :src="product.image || 'https://via.placeholder.com/150'" alt="Product image" />
+            <ion-card-content>
+              <h3>{{ product.item_name }}</h3> <!-- Product Name -->
+              <p>{{ product.item_type }}</p>  <!-- Product Type -->
+              <p>Price: {{ product.price}} pts</p> <!-- Product Price -->
+              <ion-button color="success" class="purchase-button">
+           Buy
           </ion-button>
-        </ion-item>
-      </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </div>
+      </div>
     </ion-content>
   </ion-page>
 </template>
+
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
@@ -41,10 +43,9 @@ import {
   IonToolbar,
   IonTitle,
   IonContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonAvatar,
+  IonCardContent,
+  IonIcon,
+  IonCard,
   IonButton,
 } from '@ionic/vue';
 import { Preferences } from '@capacitor/preferences';
@@ -54,22 +55,26 @@ interface ShopItem {
   item_name: string;
   item_type: string;
   price: number;
+  image: string;  // Add an image field for each product
 }
 
 const shopItems = ref<ShopItem[]>([]);
 
 onMounted(async () => {
   const { value: bearer } = await Preferences.get({ key: 'token' });
-
   const options = {
     headers: {
       Authorization: `Bearer ${bearer}`,
     },
   };
+
   try {
     const response = await axios.get('https://test.nanodata.cloud/test-shop', options);
-    console.log(response.data)
-    shopItems.value = response.data.shop_items;
+    // Assuming each product in the response contains an image field
+    shopItems.value = response.data.shop_items.map((item: any) => ({
+      ...item,
+      image: item.image || 'https://via.placeholder.com/150' // Fallback image if no image is provided
+    }));
   } catch (error) {
     console.error('Error fetching shop items:', error);
   }
@@ -77,13 +82,50 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.shop-item {
-  display: flex;
-  align-items: center;
+/* Global reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.item-number,
-.item-name {
-  margin-right: 10px;
+/* Section Produits populaires */
+.products-section {
+  padding: 10px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-card {
+  flex: 1 1 calc(50% - 10px);
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.product-card img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 8px 8px 0 0;
+}
+
+.product-card ion-card-content {
+  padding: 10px;
+}
+
+.product-card ion-button {
+  margin-top: 10px;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
 }
 </style>
