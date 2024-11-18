@@ -67,8 +67,8 @@ async function handleSubmit() {
         console.log('Response:', response.data);
 
         // Si l'API renvoie un token
-        if (response.data.token) {
-            localStorage.setItem('token', response.data.token);
+        if (response.data.access_token) {
+            localStorage.setItem('token', response.data.access_token);
             router.push('/home');
         }
     } catch (error) {

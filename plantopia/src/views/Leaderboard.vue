@@ -1,12 +1,11 @@
 <template>
   <ion-page>
-    <ion-header>
-      <ion-toolbar>
-        <!-- Bouton retour -->
+    <ion-header class="ion-no-border">
+      <ion-toolbar class="transparent-toolbar">
+        <!-- Bouton retour sans texte, avec une flèche -->
         <ion-buttons slot="start">
-          <ion-back-button defaultHref="/home" /> <!-- Redirige vers la page d'accueil -->
+          <ion-back-button defaultHref="/home" text="" />
         </ion-buttons>
-        <ion-title>Leaderboard</ion-title>
       </ion-toolbar>
     </ion-header>
 
@@ -55,7 +54,7 @@ import {
   IonBackButton,
   IonHeader,
   IonToolbar,
-  IonTitle,
+  IonGrid,
   IonContent,
   IonList,
   IonItem,
@@ -68,11 +67,7 @@ const currentUserRank = ref<number | null>(null);
 const currentUser = ref<{ id: number; username: string; points: number }>({ id: 0, username: "", points: 0 });
 
 onMounted(() => {
-  const bearer = localStorage.getItem('accessToken');
-  if (!bearer) {
-    alert('Token de connexion manquant.');
-    return;
-  }
+  const bearer = localStorage.getItem('token');
 
   const options = {
     headers: {
@@ -113,20 +108,31 @@ onMounted(() => {
 });
 </script>
 
+
 <style scoped>
 ion-content {
-  --background: linear-gradient(217deg, #2CD58F, #0FD3AC 70.71%, #006F7F);
+  --background: url('../../resources/backgroundLead.png') no-repeat center center / cover;
+}
+
+
+.transparent-toolbar {
+  --background: transparent;
+  /* --box-shadow: none; */
+}
+
+ion-back-button {
+  --color: white;
+  --border-radius: 50%;
 }
 
 .rank-badge {
   display: inline-block;
-  padding: 5px 10px;
+  padding: 5px 8px;
   margin-right: 10px;
   background-color: #ffffff;
-  border: 2px solid rgb(189, 189, 189);
-  border-radius: 20px; 
+  border-radius: 8px;
   font-weight: bold;
-  font-size: 18px;
+  font-size: 12px;
   color: black;
   text-align: center;
 }
@@ -175,12 +181,12 @@ ion-list {
 
 section {
   z-index: 5;
-  background-color: #FAFAFA;
+  background-color: #F1F5E7;
   border-radius: 20px 20px 0 0px;
 }
 
 ion-list {
-  background-color: #FAFAFA;
+  background-color: #F1F5E7;
 }
 
 ion-item {
@@ -189,7 +195,6 @@ ion-item {
   --padding-end: 16px;
   border-radius: 8px;
   margin-bottom: 10px;
-  padding: 10px;
   background-color: #ffffff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
@@ -197,49 +202,5 @@ ion-item {
 ion-label {
   font-size: 16px;
   font-weight: normal;
-}
-
-/* Style pour la section des points des utilisateurs */
-.user-points {
-  margin-top: 40px;
-  padding: 20px;
-  background-color: #f9f9f9;
-  border-radius: 10px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.user-points h3 {
-  font-size: 18px;
-  color: #42e94d;
-  margin-bottom: 15px;
-  text-align: center;
-}
-
-.points-list {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.points-item {
-  display: flex;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #ffffff;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.points-item:hover {
-  background-color: #f0f0f0;
-}
-
-.username {
-  font-weight: bold;
-}
-
-.points {
-  font-size: 18px;
-  color: #42e94d;
 }
 </style>
