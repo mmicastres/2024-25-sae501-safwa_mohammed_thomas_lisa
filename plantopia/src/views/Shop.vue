@@ -21,7 +21,7 @@
             <span class="item-name">{{ item.item_name }}</span>
             <p>{{ item.item_type }}</p>
           </ion-label>
-          <ion-button color="success" class="purchase-button">
+          <ion-button color="success"  class="purchase-button">
             {{ item.price }}
           </ion-button>
         </ion-item>
@@ -64,7 +64,6 @@ onMounted(async () => {
       Authorization: `Bearer ${bearer}`,
     },
   };
-
   try {
     const response = await axios.get('https://test.nanodata.cloud/test-shop', options);
     console.log(response.data)
@@ -85,4 +84,5 @@ onMounted(async () => {
 .item-name {
   margin-right: 10px;
 }
+
 </style>

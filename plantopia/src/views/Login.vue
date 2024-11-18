@@ -1,32 +1,40 @@
 <template>
     <ion-page>
         <ion-content>
-            <div class="auth-form">
-                <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
+            <ion-grid>
+                <ion-row class="ion-align-items-center">
+                    <ion-col>
+                        <div class="auth-form">
+                            <h2>{{ isLogin ? 'Login' : 'Register' }}</h2>
 
-                <form @submit.prevent="handleSubmit">
-                    <div class="form-group">
-                        <IonLabel for="username">Username</IonLabel>
-                        <IonInput type="text" id="username" v-model="form.username" required
-                            placeholder="Enter your username" />
-                    </div>
+                            <form @submit.prevent="handleSubmit">
+                                <div class="form-group">
+                                    <IonLabel for="username">Username</IonLabel>
+                                    <IonInput type="text" id="username" v-model="form.username" required
+                                        placeholder="Enter your username" />
+                                </div>
 
-                    <div class="form-group">
-                        <IonLabel for="password">Password</IonLabel>
-                        <IonInput type="password" id="password" v-model="form.password" required
-                            placeholder="Enter your password" />
-                    </div>
+                                <div class="form-group">
+                                    <IonLabel for="password">Password</IonLabel>
+                                    <IonInput type="password" id="password" v-model="form.password" required
+                                        placeholder="Enter your password" />
+                                </div>
 
-                    <IonButton type="submit">{{ isLogin ? 'Login' : 'Register' }}</IonButton>
-                </form>
+                                <IonButton color="success" type="submit">{{ isLogin ? 'Login' : 'Register' }}
+                                </IonButton>
+                            </form>
 
-                <p>
-                    {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
-                    <IonButton @click="toggleAuthMode">{{ isLogin ? 'Register' : 'Login' }}</IonButton>
-                </p>
+                            <p>
+                                {{ isLogin ? "Don't have an account?" : "Already have an account?" }}
+                                <IonButton color="success" @click="toggleAuthMode">{{ isLogin ? 'Register' : 'Login' }}
+                                </IonButton>
+                            </p>
 
-                <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
-            </div>
+                            <p v-if="errorMessage" class="error-message">{{ errorMessage }}</p>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
         </ion-content>
     </ion-page>
 </template>
@@ -34,9 +42,7 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { IonButton, IonInput, IonLabel, IonPage, IonContent } from '@ionic/vue';
-import { navigate } from 'ionicons/icons';
-import { useRouter } from 'vue-router';
+import { IonButton, IonInput, IonLabel, IonPage, IonContent, IonGrid, IonRow,IonCol} from '@ionic/vue';
 import router from '../router';
 const isLogin = ref(true);
 const form = ref({
