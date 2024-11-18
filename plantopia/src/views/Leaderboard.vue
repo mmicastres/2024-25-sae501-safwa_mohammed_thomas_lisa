@@ -33,9 +33,7 @@
       <section>
         <ion-grid>
           <ion-list :inset="true">
-            <ion-item 
-              v-for="(user, index) in leaderboard.slice(0, 10)" 
-              :key="index" lines="none">
+            <ion-item v-for="(user, index) in leaderboard.slice(0, 10)" :key="index" lines="none">
               <ion-label>
                 <span class="rank-badge">{{ index + 1 }}</span>
                 {{ user.username }}
@@ -66,14 +64,14 @@ import {
   IonItem,
   IonLabel
 } from '@ionic/vue';
-
+import { Preferences } from '@capacitor/preferences';
 // Déclarations des variables réactives
 const leaderboard = ref<{ id: number, username: string, points: number }[]>([]);
 const currentUserRank = ref<number | null>(null);
 const currentUser = ref<{ id: number; username: string; points: number }>({ id: 0, username: "", points: 0 });
 
-onMounted(() => {
-  const bearer = localStorage.getItem('token');
+onMounted(async () => {
+  const { value: bearer } = await Preferences.get({ key: 'token' });
 
   const options = {
     headers: {
@@ -109,7 +107,6 @@ onMounted(() => {
     })
     .catch((error) => {
       console.error('Erreur lors du chargement des données:', error);
-      alert('Impossible de charger le classement. Veuillez réessayer plus tard.');
     });
 });
 </script>

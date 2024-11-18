@@ -42,8 +42,10 @@
 <script setup>
 import { ref } from 'vue';
 import axios from 'axios';
-import { IonButton, IonInput, IonLabel, IonPage, IonContent, IonGrid, IonRow,IonCol} from '@ionic/vue';
+import { IonButton, IonInput, IonLabel, IonPage, IonContent, IonGrid, IonRow, IonCol } from '@ionic/vue';
 import router from '../router';
+import { saveToken } from '../../capacitorPrefer';
+
 const isLogin = ref(true);
 const form = ref({
     username: '',
@@ -70,11 +72,10 @@ async function handleSubmit() {
 
     try {
         const response = await axios.post(apiUrl, form.value);
-        console.log('Response:', response.data);
-
-        // Si l'API renvoie un token
         if (response.data.access_token) {
-            localStorage.setItem('token', response.data.access_token);
+            // Sauvegarder le token
+            await saveToken(response.data.access_token);
+            // Rediriger vers la page d'accueil
             router.push('/home');
         }
     } catch (error) {

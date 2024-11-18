@@ -21,7 +21,7 @@
             <span class="item-name">{{ item.item_name }}</span>
             <p>{{ item.item_type }}</p>
           </ion-label>
-          <ion-button color="success"  class="purchase-button">
+          <ion-button color="success" class="purchase-button">
             {{ item.price }}
           </ion-button>
         </ion-item>
@@ -47,6 +47,7 @@ import {
   IonAvatar,
   IonButton,
 } from '@ionic/vue';
+import { Preferences } from '@capacitor/preferences';
 
 interface ShopItem {
   id: number;
@@ -58,7 +59,8 @@ interface ShopItem {
 const shopItems = ref<ShopItem[]>([]);
 
 onMounted(async () => {
-  const bearer = localStorage.getItem('token');
+  const { value: bearer } = await Preferences.get({ key: 'token' });
+
   const options = {
     headers: {
       Authorization: `Bearer ${bearer}`,
@@ -84,5 +86,4 @@ onMounted(async () => {
 .item-name {
   margin-right: 10px;
 }
-
 </style>
