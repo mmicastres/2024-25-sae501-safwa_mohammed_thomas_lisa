@@ -5,8 +5,11 @@ import { Preferences } from '@capacitor/preferences';
 import router from './router';
 
 const api: AxiosInstance = axios.create({
-    baseURL: 'https://api.example.com',
+    baseURL: 'https://test.nanodata.cloud/',
     timeout: 10000,
+    headers: {
+        'Content-Type': 'application/json',
+    },
 });
 
 async function getAccessToken(): Promise<string | null> {
@@ -18,7 +21,7 @@ async function refreshAccessToken(): Promise<string> {
     const { value: refreshToken } = await Preferences.get({ key: 'refresh_token' });
 
     try {
-        const response: AxiosResponse = await axios.post('https://api.example.com/refresh', {
+        const response: AxiosResponse = await axios.post('https://test.nanodata.cloud/refresh_token', {
             refresh_token: refreshToken,
         });
         const newAccessToken: string = response.data.access_token;
