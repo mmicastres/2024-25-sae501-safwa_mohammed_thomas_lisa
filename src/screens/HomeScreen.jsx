@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Button, TouchableOpacity } from 'react-native';
-import { WebView } from 'react-native-webview';
+import { StyleSheet, View, Button, TouchableOpacity } from 'react-native';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import Icon from 'react-native-vector-icons/FontAwesome';  // Icônes FontAwesome
+import { WebView } from 'react-native-webview';
 
-export default function Home() {
+export default function Home({ navigation }) {
   const [facing, setFacing] = useState('back');
   const [permission, requestPermission] = useCameraPermissions();
   const [showAR, setShowAR] = useState(false);
@@ -30,11 +30,11 @@ export default function Home() {
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
         <View style={styles.iconContainer}>
-          <TouchableOpacity style={[styles.iconButton, styles.TopLeft]}>
+          <TouchableOpacity style={[styles.iconButton, styles.TopLeft]} onPress={() => navigation.navigate("Leaderboard")}>
             <Icon name="trophy" size={30} color="white" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.iconButton, styles.TopRight]}>
+          <TouchableOpacity style={[styles.iconButton, styles.TopRight]} onPress={() => navigation.navigate("Profil")}>
             <Icon name="gear" size={30} color="white" />
           </TouchableOpacity>
 
@@ -42,18 +42,19 @@ export default function Home() {
             <Icon name="retweet" size={30} color="white" />
           </TouchableOpacity>
 
-          <TouchableOpacity style={[styles.iconButton, styles.BottomRight]} onPress={() => setShowAR(!showAR)}>
+          <TouchableOpacity style={[styles.iconButton, styles.BottomRight]} onPress={() => navigation.navigate("Shop")}>
             <Icon name="shopping-cart" size={30} color="white" />
           </TouchableOpacity>
         </View>
       </CameraView>
 
-  
+      {showAR && (
         <WebView
-          source={{ uri: '../aframe-ar.html' }}
+          originWhitelist={['*']}
+          source={require('../../assets/aframe-ar.html')}  // Le fichier HTML dans assets
           style={styles.webview}
         />
-     
+      )}
     </View>
   );
 }
@@ -107,6 +108,6 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     bottom: 0,
-    zIndex: 1,
+    zIndex: 1, // S'assurer qu'il est au-dessus de la caméra
   },
 });

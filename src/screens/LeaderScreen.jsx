@@ -1,10 +1,10 @@
 import { View, Text } from 'react-native'
 import React from 'react'
 
-export default function ShopScreen() {
+export default function LeaderScreen() {
     return (
         <View>
-            <Text>ShopScreen</Text>
+            <Text>LeaderScreen</Text>
         </View>
     )
 }
