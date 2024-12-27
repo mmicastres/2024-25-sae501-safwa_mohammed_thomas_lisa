@@ -1,80 +1,70 @@
-# Plantopia 🌱
+# Getting Started with Create React App
 
-**Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles. Chaque interaction fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles qu'on peut acheter dans la boutique du jeu avec des points qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
----
+## Available Scripts
 
-## Fonctionnalités principales 🌿
+In the project directory, you can run:
 
-- **Planter des graines** : Plantez et faites pousser une plante virtuelle dans un pot en RA.
-- **Arrosage virtuel** : Arrosez votre plante pour encourager sa croissance.
-- **Rôles aléatoires** : À chaque session, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
-- **Possibilité de mort des plantes** : Si une plante n’est pas arrosée régulièrement, elle peut se faner et mourir.
-- **Points Journalier**: À chaque action (connexion, action sur les portes) on gagne des points, et on peut les utiliser dans la boutique. 
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
----
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-## Rôles spéciaux 🌟
+### `npm test`
 
-Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque utilisateur au début d'une session. Ces rôles peuvent aider à la croissance des plantes, la ralentir, ou la saboter. Voici les rôles disponibles :
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-1. **Double Pousse (Grow Booster) 🌿**
-   - **Effet** : Ce rôle permet de doubler la vitesse de croissance des plantes lorsqu’elles sont arrosées.
-   - **Action** : Chaque arrosage par le joueur avec ce rôle accélère la croissance de la plante, la faisant évoluer deux fois plus vite.
-   - **Indication visuelle** : Un halo vert brillant apparaît autour de la plante.
-   - 
-2. **Neutre (Neutral) 🌾**
-   - **Effet** : Ce rôle n'a aucun effet spécial sur les plantes.
-   - **Action** : Le joueur peut arroser les plantes normalement sans influence sur leur croissance.
-   - **Indication visuelle** : La plante se développe normalement, sans effets visuels spécifiques.
+### `npm run build`
 
----
-# PLANTOPIA Actions and Points System
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-| **Action**         | **Points Earned** |
-|--------------------|-------------------|
-| Get on the app      | 10 points         |
-| Water a plant       | 20 points         |
-| Sun Action          | 25 points         |
-| New plant           | 15 points         |
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
----
-## Mécanique de mort des plantes ⚰️
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 72 heures en temps réel), elle commence à se détériorer et peut mourir.
+### `npm run eject`
 
-### Processus de détérioration :
-1. **Première étape** : La plante perd de la couleur, et ses feuilles jaunissent.
-2. **Deuxième étape** : Les feuilles se flétrissent, et la plante cesse de croître.
-3. **Mort** : Si la plante n'est pas arrosée après ces signes, elle meurt définitivement.
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-### Récupération :
-Si la plante est arrosée avant sa mort complète, elle peut récupérer, mais sa croissance sera ralentie pendant un certain temps.
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
----
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-## Interactions utilisateur via les gestes 🎮
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-Les fonctionnalités de **Plantopia** sont contrôlées par des gestes tactiles, permettant aux utilisateurs d’interagir facilement avec les plantes et l’environnement en RA.
+## Learn More
 
-1. **Double clic** :
-   - **Action** : Planter une graine
-   - **Fonctionnalité associée** : 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-2. **Glissement vers le haut** :
-   - **Action** : Gérer l'ensoleillement 
-   - **Fonctionnalité associée** : 
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-3. **Secoué (Shake)** :
-   - **Action** : Arroser la plante
-   - **Fonctionnalité associée** :
+### Code Splitting
 
-4. **Glissement vers le bas** :
-   - **Action** : Assécher la plante
-   - **Fonctionnalité associée** :
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-## Conclusion 🌸
+### Analyzing the Bundle Size
 
-**Plantopia** offre une expérience immersive où les utilisateurs peuvent non seulement prendre soin de leurs plantes en RA, mais aussi interagir avec d'autres joueurs à travers des rôles aléatoires qui rendent chaque session unique et dynamique. Restez vigilant et arrosez vos plantes régulièrement pour éviter qu’elles ne se fanent ou ne soient sabotées !
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Making a Progressive Web App
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
