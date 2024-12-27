@@ -17,7 +17,7 @@ export default function App() {
     },
     {
       name: "Succulent",
-      model: "/assets/hoya_australis.glb",
+      model: "/assets/banana_plant_with_pot.glb",
     },
   ];
 
