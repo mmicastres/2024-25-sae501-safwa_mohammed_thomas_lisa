@@ -59,10 +59,6 @@
           <ion-label>Plantes Favorites</ion-label>
         </ion-list-header>
         <ion-item v-for="(plant, index) in favoritePlants" :key="index">
-          <ion-avatar slot="start">
-            <!-- Image de la plante -->
-            <img :src="plant.image" alt="Plant Image" />
-          </ion-avatar>
           <ion-label>
             <h2>{{ plant.name }}</h2>
             <p class="plant-description">{{ plant.description }}</p> <!-- Ajout de la classe pour le texte -->

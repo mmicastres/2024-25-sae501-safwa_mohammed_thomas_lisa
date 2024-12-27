@@ -1,23 +1,23 @@
 <template>
   <ion-page>
     <ion-content fullscreen>
-       <!-- Fullscreen iframe pour contenu AR -->
-      <iframe src="../../aframe-ar.html" frameborder="0"
+       <!-- Fullscreen iframe pour contenu AR avec modèle dynamique -->
+      <iframe :src="iframeSrc" frameborder="0"
         style="border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: -1;"
         allow="camera; fullscreen"></iframe>
 
-      <!-- Boutons du menu -->
+      <!-- Boutons du menu pour changer les modèles -->
       <div class="menu-buttons">
-        <ion-button class="menu-btn top-right" href="settings" shape="round">
-          <ion-icon slot="icon-only" :icon="settings" />
+        <ion-button class="menu-btn top-right" @click="changeModel('./resources/banana_plant_with_pot.glb')" shape="round">
+          Plante 1
         </ion-button>
 
-        <ion-button class="menu-btn bottom-left" href="shop" shape="round">
-          <ion-icon slot="icon-only" :icon="storefront" />
+        <ion-button class="menu-btn top-left" @click="changeModel('./resources/ducktoise.glb')" shape="round">
+          Plante 2
         </ion-button>
 
-        <ion-button class="menu-btn bottom-right" href="leaderboard" shape="round">
-          <ion-icon slot="icon-only" :icon="trophy"></ion-icon>
+        <ion-button class="menu-btn bottom-left" @click="changeModel('./resources/plants.glb')" shape="round">
+          Plante 3
         </ion-button>
       </div>
     </ion-content>
@@ -29,17 +29,13 @@ import { ref } from 'vue';
 import { IonButton, IonIcon, IonPage, IonContent } from '@ionic/vue';
 import { settings, storefront, trophy } from 'ionicons/icons';
 
-const isMarkerFound = ref(false);
+// Définir une ref pour l'URL de l'iframe
+const iframeSrc = ref("../../aframe-ar.html?model=./resources/banana_plant_with_pot.glb");
 
-// Fonction appelée lorsqu'un marqueur est trouvé
-function onMarkerFound() {
-  isMarkerFound.value = true;
-  console.log("Marqueur AR détecté !");
-  // Enlève la classe blink si le marqueur est trouvé
-  const scanElement = document.querySelector('.scan');
-  if (scanElement) {
-    scanElement.classList.remove('blink');
-  }
+// Fonction pour changer le modèle dans l'iframe
+function changeModel(modelPath: string) {
+  // Mise à jour du src de l'iframe avec le modèle sélectionné
+  iframeSrc.value = `../../aframe-ar.html?model=${modelPath}`;
 }
 </script>
 
@@ -61,6 +57,7 @@ ion-content {
   position: absolute;
   width: 100%;
   height: 100%;
+  z-index: 10;
 }
 
 /* 4. Position des boutons */
@@ -71,6 +68,11 @@ ion-content {
 .top-right {
   top: 20px;
   right: 20px;
+}
+
+.top-left {
+  top: 20px;
+  left: 20px;
 }
 
 .bottom-left {
