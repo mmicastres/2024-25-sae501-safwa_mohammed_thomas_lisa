@@ -8,7 +8,13 @@ import { defineConfig } from 'vite'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),     // Vue.js support
+    vue({
+      template: {
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('a-') 
+        }
+      }
+    }),     // Vue.js support
     legacy({   // Pour le support des navigateurs plus anciens
       targets: ['defaults', 'not IE 11'], // Cible les navigateurs modernes sauf IE11
     })
