@@ -21,6 +21,10 @@ const routes: Array<RouteRecordRaw> = [
     component: Home,
   },
   {
+    path: '/intro',
+    component: IntroSlider,
+  },
+  {
     path: '/',
     component: Splash,
   },

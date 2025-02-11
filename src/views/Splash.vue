@@ -9,15 +9,15 @@ onMounted(async () => {
     // Vérifier le token après 1 seconde
     setTimeout(async () => {
         try {
-            const { value: token } = await Preferences.get({ key: 'c' });
+            const { value: token } = await Preferences.get({ key: 'secondConnexion' });
             if (token) {
                 router.replace('/home'); // Redirection vers Home
             } else {
-                router.replace('/home'); // Redirection vers Intro
+                router.replace('/intro'); // Redirection vers Intro
             }
         } catch (error) {
             console.error('Erreur lors de la vérification du token :', error);
-            router.replace('/home');
+            router.replace('/intro');
         }
     }, 1000);
 });
