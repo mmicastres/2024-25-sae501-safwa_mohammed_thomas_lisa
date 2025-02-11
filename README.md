@@ -1,5 +1,27 @@
 # Plantopia 🌱
 
+**Pour lancer l'application**
+
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/votre-utilisateur/plantopia.git
+   ```
+
+2. Accédez au répertoire du projet :
+   ```bash
+   cd plantopia
+   ```
+
+3. Installez les dépendances :
+   ```bash
+   npm install
+   ```
+
+4. Lancez l'application en mode développement :
+   ```bash
+   npm run dev
+   ```
+
 **Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de planter et entretenir des plantes virtuelles. Chaque interaction fait évoluer la plante et transforme l’environnement en RA autour de l’utilisateur. **Plantopia** introduit également des rôles qu'on peut acheter dans la boutique du jeu avec des points qui influencent la croissance des plantes, ainsi que la possibilité de saboter ou d'accélérer leur développement. Les plantes peuvent également mourir si elles ne sont pas suffisamment arrosées.
 
 ---
@@ -8,7 +30,7 @@
 
 - **Planter des graines** : Plantez et faites pousser une plante virtuelle dans un pot en RA.
 - **Arrosage virtuel** : Arrosez votre plante pour encourager sa croissance.
-- **Rôles aléatoires** : À chaque session, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
+- **Rôles aléatoires** : Chaque jour, un rôle aléatoire est attribué aux utilisateurs, influençant directement la croissance ou la santé des plantes.
 - **Possibilité de mort des plantes** : Si une plante n’est pas arrosée régulièrement, elle peut se faner et mourir.
 - **Points Journalier**: À chaque action (connexion, action sur les portes) on gagne des points, et on peut les utiliser dans la boutique. 
 
@@ -45,9 +67,7 @@ Dans **Plantopia**, des rôles sont disponible dans la boutique permet à chaque
 Les plantes dans **Plantopia** nécessitent un arrosage régulier pour survivre. Si une plante reste sans soins pendant une certaine durée (par exemple, 72 heures en temps réel), elle commence à se détériorer et peut mourir.
 
 ### Processus de détérioration :
-1. **Première étape** : La plante perd de la couleur, et ses feuilles jaunissent.
-2. **Deuxième étape** : Les feuilles se flétrissent, et la plante cesse de croître.
-3. **Mort** : Si la plante n'est pas arrosée après ces signes, elle meurt définitivement.
+- La plante possède 100hp, elle pert 12hp par jour, les actions des utilisateurs lui redonnent des hp lui permettant de rester en vie. Sans ces actions et une fois arrivé à 0hp la plante meurt et disparait.
 
 ### Récupération :
 Si la plante est arrosée avant sa mort complète, elle peut récupérer, mais sa croissance sera ralentie pendant un certain temps.

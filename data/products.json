@@ -1,0 +1,31 @@
+{
+    "plants": [{
+        "name":"Monstera",
+        "hp":100
+    },
+    {
+        "name":"cactus",
+        "hp":100
+    },
+    {
+        "name":"flower",
+        "hp":100
+    }],
+
+    "items": [{
+        "name":"double grow",
+        "price":90
+    },
+    {
+        "name":"sunshine",
+        "price":90
+    },
+    {
+        "name":"water",
+        "price":50
+    },
+    {
+        "name":"plant seeds",
+        "price":30
+    }]
+}
