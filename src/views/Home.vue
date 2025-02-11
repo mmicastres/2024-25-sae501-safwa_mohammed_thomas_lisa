@@ -1,33 +1,23 @@
 <template>
   <ion-page>
     <ion-content fullscreen>
-      <iframe
-        :src="iframeSrc"
-        frameborder="0"
+      <iframe :src="iframeSrc" frameborder="0"
         style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: auto;"
         allow="camera; fullscreen">
       </iframe>
 
       <div class="overlay-container">
         <div class="menu-buttons">
-          <ion-button
-            class="menu-btn top-right"
-            @click="changeModel('./resources/banana_plant_with_pot.glb')"
+          <ion-button class="menu-btn top-right" @click="changeModel('./resources/banana_plant_with_pot.glb')"
             shape="round">
             Plante 1
           </ion-button>
 
-          <ion-button
-            class="menu-btn top-left"
-            @click="changeModel('./resources/ducktoise.glb')"
-            shape="round">
+          <ion-button class="menu-btn top-left" @click="changeModel('./resources/ducktoise.glb')" shape="round">
             Plante 2
           </ion-button>
 
-          <ion-button
-            class="menu-btn bottom-left"
-            @click="changeModel('./resources/plants.glb')"
-            shape="round">
+          <ion-button class="menu-btn bottom-left" @click="changeModel('./resources/plants.glb')" shape="round">
             Plante 3
           </ion-button>
         </div>
@@ -36,13 +26,13 @@
   </ion-page>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import { ref } from 'vue';
-import { IonButton, IonPage, IonContent } from '@ionic/vue';
+import { IonButton, IonPage, IonContent } from "@ionic/vue";
 
 const iframeSrc = ref("../../aframe-ar.html?model=./resources/banana_plant_with_pot.glb");
 
-function changeModel(modelPath: string) {
+function changeModel(modelPath) {
   iframeSrc.value = `../../aframe-ar.html?model=${modelPath}`;
 }
 </script>
@@ -76,15 +66,15 @@ iframe {
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999; 
-  pointer-events: none; 
+  z-index: 9999;
+  pointer-events: none;
 }
 
 .menu-buttons {
   position: absolute;
   width: 100%;
   height: 100%;
-  pointer-events: none; 
+  pointer-events: none;
 }
 
 .menu-btn {

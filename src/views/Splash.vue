@@ -6,10 +6,9 @@ import { Preferences } from '@capacitor/preferences';
 const router = useRouter();
 
 onMounted(async () => {
-    // Vérifier le token après 1 seconde
     setTimeout(async () => {
         try {
-            const { value: token } = await Preferences.get({ key: 'secondConnexion' });
+            const { value: token } = await Preferences.get({ key: 'access_token' });
             if (token) {
                 router.replace('/home'); // Redirection vers Home
             } else {
@@ -25,7 +24,7 @@ onMounted(async () => {
 
 <template>
     <div class="splash-screen">
-        <img src="../../public/logo.png" alt="Logo" class="logo" />
+        <img src="/logo.png" alt="Logo" class="logo" />
     </div>
 </template>
 

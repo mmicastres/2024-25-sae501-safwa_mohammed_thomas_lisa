@@ -31,10 +31,11 @@ import { ref } from "vue";
 import { useIonRouter } from "@ionic/vue";
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { IonPage, IonContent, IonFooter, IonToolbar, IonText, IonButton } from "@ionic/vue";
+import { Preferences } from '@capacitor/preferences';
 import { Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-import "@/assets/intro.css";
+import "@/theme/intro.css";
 
 const router = useIonRouter();
 const swiper = ref(null); // ✅ Stocker l'instance Swiper
@@ -62,9 +63,11 @@ const onNextClick = () => {
     }
 };
 
-const onSkip = () => {
+const onSkip = async () => {
+    await Preferences.set({ key: 'access_token', value: "secondConnexion" });
     router.push(`/home`);
 };
+
 </script>
 
 <style scoped>
