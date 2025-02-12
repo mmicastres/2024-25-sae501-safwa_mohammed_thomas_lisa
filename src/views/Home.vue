@@ -88,6 +88,7 @@ const temperature = ref('Ougabouga');
 const modal = ref();
 const input = ref();
 
+//fermer la modal
 const cancel = () => modal.value.$el.dismiss(null, 'cancel');
 const fermer = () => modal.value.$el.dismiss(null, 'cancel');
 
