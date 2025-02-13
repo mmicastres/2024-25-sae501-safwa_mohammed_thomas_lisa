@@ -197,7 +197,7 @@ onMounted(async () => {
     const response = await axios.get('https://test.nanodata.cloud/test-users', {
       headers: { Authorization: `Bearer ${token}` },
     });
-    leaderboard.value = response.data.users;
+    leaderboard.value = response.data.users.sort((a, b) => b.points - a.points);
   } catch (error) {
     console.error('Error fetching leaderboard:', error);
   }
