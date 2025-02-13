@@ -1,178 +1,230 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <title>AR Duck Placer</title>
-  <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <title>Three.js AR Model Placer</title>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.149.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.149.0/examples/jsm/"
+    }
+  }
+  </script>
   <style>
-    body { margin: 0; }
-    .a-canvas {
-      pointer-events: auto !important; 
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: sans-serif;
     }
-    #ui-container {
+    #modelUI {
       position: fixed;
-      top: 50%;
+      top: 20px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      justify-content: center;
+      transform: translateX(-50%);
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 10px;
+      border-radius: 5px;
+      display: flex;
       align-items: center;
-      width: 100%;
-      text-align: center;
-      pointer-events: none; 
-      z-index: 1;
+      gap: 10px;
     }
-    #startARButton {
-      pointer-events: auto; 
-      padding: 12px 24px;
-      background: #ffffff;
-      border: none;
-      border-radius: 4px;
+    #model-select {
+      font-size: 16px;
+    }
+    #changeModelButton {
       font-size: 16px;
       cursor: pointer;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      padding: 6px 12px;
     }
   </style>
 </head>
 <body>
-  <a-scene
-    embedded
-    vr-mode-ui="enabled: false"
-    webxr="optionalFeatures: dom-overlay,dom-overlay-for-handheld-ar; overlayElement: #ui-container;"
-    renderer="antialias: true; alpha: true; precision: mediump;"
-    cursor="rayOrigin: mouse; fuse: false" 
-    raycaster="objects: .clickable">      
+  <div id="modelUI">
+    <select id="model-select"></select>
+    <button id="changeModelButton">Change Model</button>
+  </div>
+  <div id="overlay-content"></div>
+  <script type="application/json" id="models-data">
+    [
+      {
+        "name": "Duck",
+        "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
+        "imageSrc": "https://th.bing.com/th/id/R.768cdb94accc7b4949919ac2f58cfc71?rik=IrtuX1L0mvSMTw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f5PaCHum.jpg&ehk=1wkpazwC51JIrHxTVWx%2fDWrb8Rb67RD24oSrKA5TnsA%3d&risl=&pid=ImgRaw&r=0",
+        "description": "A small duck model used for testing.",
+        "scale": 0.1,
+        "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/DuckCM.png"
+      },
+      {
+        "name": "Avocado",
+        "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf",
+        "imageSrc": "https://th.bing.com/th/id/OIP.nvQC6VYxvemYV1ynKm3elgHaEp?rs=1&pid=ImgDetMain",
+        "description": "Avocado tree of the family Lauraceae",
+        "scale": 5.0,
+        "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado_baseColor.png"
+      }
+    ]
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { ARButton } from 'three/addons/webxr/ARButton.js';
+    import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+    import { DRACOLoader } from 'three/addons/loaders/DRACOLoader.js';
 
-    <a-assets>
-      <a-asset-item id="duck" src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf"></a-asset-item>
-    </a-assets>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 0.01, 20);
+    camera.position.set(0, 1.6, 3);
 
-    <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.xr.enabled = true;
+    document.body.appendChild(renderer.domElement);
 
-    <a-entity id="hit-test-marker" visible="false"> 
-      <a-circle radius="0.1" color="#FF0000" rotation="-90 0 0" material="shader: flat; transparent: true; opacity: 0.5"></a-circle>
-    </a-entity>
-  </a-scene>
+    const overlayContent = document.getElementById('overlay-content');
+    document.body.appendChild(
+      ARButton.createButton(renderer, {
+        requiredFeatures: ['hit-test'],
+        optionalFeatures: ['dom-overlay'],
+        domOverlay: { root: overlayContent }
+      })
+    );
 
-  <!-- <div id="ui-container">
-    <button id="startARButton">Start AR</button>
-  </div> -->
+    const reticleGeometry = new THREE.RingGeometry(0.15, 0.2, 32).rotateX(-Math.PI / 2);
+    const reticleMaterial = new THREE.MeshBasicMaterial({ color: 0xff0000 });
+    const reticle = new THREE.Mesh(reticleGeometry, reticleMaterial);
+    reticle.matrixAutoUpdate = false;
+    reticle.visible = false;
+    scene.add(reticle);
 
-  <script>
-    if (!AFRAME.components['ar-hit-test']) {
-      AFRAME.registerComponent('ar-hit-test', {
-        init: function() {
-          this.xrHitTestSource = null;
-          this.viewerSpace = null;
-          this.refSpace = null;
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1);
+    scene.add(ambientLight);
 
-          this.el.sceneEl.renderer.xr.addEventListener('sessionstart', async () => {
-            try { 
-              this.viewerSpace = await this.el.sceneEl.renderer.xr.getSession().requestReferenceSpace('viewer');
-              this.refSpace = await this.el.sceneEl.renderer.xr.getSession().requestReferenceSpace('local');
-              this.xrHitTestSource = await this.el.sceneEl.renderer.xr.getSession().requestHitTestSource({
-                space: this.viewerSpace
-              });
-              console.log('AR session started and hit test source created.');
-            } catch (error) {
-              console.error('Error starting AR session or creating hit test source:', error);
-            }
-          });
+    const dracoLoader = new DRACOLoader();
+    const gltfLoader = new GLTFLoader();
+    gltfLoader.setDRACOLoader(dracoLoader);
 
-          this.el.sceneEl.renderer.xr.addEventListener('sessionend', () => {
-            this.xrHitTestSource = null;
-            console.log('AR session ended.');
-          });
-        },
+    const modelsData = JSON.parse(document.getElementById('models-data').textContent);
+    const modelSelect = document.getElementById('model-select');
+    const changeModelButton = document.getElementById('changeModelButton');
 
-        tick: function() { 
-          if (this.el.sceneEl.is('ar-mode')) {
-            if (!this.xrHitTestSource) return;
+    let currentModel = {
+      name: "Duck",
+      modelSrc: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
+      scale: 0.1
+    };
 
-            const frame = this.el.sceneEl.frame;
-            if (!frame) return; 
-
-            const xrViewerPose = frame.getViewerPose(this.refSpace);
-            if (xrViewerPose) {
-              const hitTestResults = frame.getHitTestResults(this.xrHitTestSource);
-              if (hitTestResults.length > 0) {
-                const hit = hitTestResults[0];
-                const hitPose = hit.getPose(this.refSpace);
-                if (hitPose) { 
-                  this.el.setAttribute('position', hitPose.transform.position);
-                  this.el.setAttribute('visible', true);
-                }
-              } else {
-                this.el.setAttribute('visible', false); 
-              }
-            } else {
-              this.el.setAttribute('visible', false); 
-            }
-          } else {
-            this.el.setAttribute('visible', false);
-          }
+    if (localStorage.getItem("model")) {
+      try {
+        const saved = JSON.parse(localStorage.getItem("model"));
+        if (saved && saved.modelSrc) {
+          currentModel = saved;
         }
-      });
+      } catch (err) {
+        console.warn("Error parsing model from localStorage:", err);
+      }
     }
 
-    window.addEventListener('DOMContentLoaded', () => {
-      const scene = document.querySelector('a-scene');
-      const marker = document.querySelector('#hit-test-marker');
-      const startARButton = document.querySelector('#startARButton');
-      let placedDucks = [];
+    modelsData.forEach((m) => {
+      const option = document.createElement('option');
+      option.value = JSON.stringify(m);
+      option.textContent = m.name;
+      if (m.name === currentModel.name) option.selected = true;
+      modelSelect.appendChild(option);
+    });
 
-      marker.setAttribute('ar-hit-test', ''); 
+    changeModelButton.addEventListener('click', () => {
+      const newModel = JSON.parse(modelSelect.value);
+      currentModel = newModel;
+      localStorage.setItem('model', JSON.stringify(currentModel));
+    });
 
-      function createDuck(position) {
-        const duck = document.createElement('a-entity');
-        duck.setAttribute('gltf-model', '#duck');
-        duck.setAttribute('position', position);
-        duck.setAttribute('scale', '0.2 0.2 0.2');
-        duck.setAttribute('class', 'clickable');
-        duck.setAttribute('rotation', '0 ' + (Math.random() * 360) + ' 0'); 
-        scene.appendChild(duck);
-        placedDucks.push(duck);
-        console.log('Duck placed at:', position); 
-      }
+    let hitTestSource = null;
+    let localReferenceSpace = null;
+    let hitTestSourceRequested = false;
 
-      ['click', 'touchend'].forEach(eventName => {
-        scene.addEventListener(eventName, (event) => {
-          if (scene.is('ar-mode')) {
-            event.preventDefault();
-            const position = marker.getAttribute('position');
-            if (marker.getAttribute('visible') && position) { 
-              createDuck(position);
-            } else {
-              console.warn('Cannot place duck: No surface detected at tap location.'); 
+    const controller = renderer.xr.getController(0);
+    controller.addEventListener('select', () => {
+      if (reticle.visible) {
+        gltfLoader.load(
+          currentModel.modelSrc,
+          (gltf) => {
+            const object = gltf.scene;
+            const scaleFactor = currentModel.scale || 1.0;
+            object.scale.set(scaleFactor, scaleFactor, scaleFactor);
+            object.updateMatrixWorld(true);
+            if (currentModel.texture) {
+              const textureLoader = new THREE.TextureLoader();
+              textureLoader.crossOrigin = 'anonymous';
+              textureLoader.load(
+                currentModel.texture,
+                (tex) => {
+                  object.traverse((child) => {
+                    if (child.isMesh && !child.material.map) {
+                      child.material.map = tex;
+                      child.material.needsUpdate = true;
+                    }
+                  });
+                },
+                undefined,
+                (err) => {
+                  console.error("Error loading texture:", err);
+                }
+              );
             }
+            object.position.setFromMatrixPosition(reticle.matrix);
+            object.quaternion.setFromRotationMatrix(reticle.matrix);
+            scene.add(object);
           }
-        });
-      });
-
-      if (!navigator.xr) {
-        startARButton.textContent = 'WebXR Not Available';
-        startARButton.disabled = true;
-        console.warn('WebXR not available on this browser/device.');
-        return;
+        );
       }
+    });
+    scene.add(controller);
 
-      startARButton.addEventListener('click', async () => {
-        try {
-          const supported = await navigator.xr.isSessionSupported('immersive-ar');
-          if (!supported) {
-            throw new Error('AR not supported on this device');
-          }
-
-          await scene.enterAR();
-          startARButton.style.display = 'none'; 
-          marker.setAttribute('visible', true); 
-          console.log('Entering AR mode.');
-        } catch (error) {
-          console.error('Error entering AR:', error);
-          startARButton.textContent = error.message; 
+    renderer.setAnimationLoop((t, frame) => {
+      if (frame) {
+        const session = renderer.xr.getSession();
+        if (!session) return;
+        if (!hitTestSourceRequested) {
+          session.requestReferenceSpace('viewer').then((refSpace) => {
+            session.requestHitTestSource({ space: refSpace }).then((source) => {
+              hitTestSource = source;
+            });
+          });
+          session.requestReferenceSpace('local').then((refSpace) => {
+            localReferenceSpace = refSpace;
+          });
+          session.addEventListener('end', () => {
+            hitTestSourceRequested = false;
+            hitTestSource = null;
+          });
+          hitTestSourceRequested = true;
         }
-      });
+        if (hitTestSource) {
+          const hits = frame.getHitTestResults(hitTestSource);
+          if (hits.length) {
+            const pose = hits[0].getPose(localReferenceSpace);
+            if (pose) {
+              reticle.visible = true;
+              reticle.matrix.fromArray(pose.transform.matrix);
+            }
+          } else {
+            reticle.visible = false;
+          }
+        }
+      }
+      renderer.render(scene, camera);
+    });
+
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
 </body>
