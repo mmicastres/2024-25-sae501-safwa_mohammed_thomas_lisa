@@ -22,19 +22,11 @@
 - **Cycle de vie des plantes** : Les plantes peuvent mourir si elles ne sont pas arrosées ou entretenues régulièrement.
 - **Interactions sociales** : Permettre aux utilisateurs d'interagir avec d'autres joueurs, partager leurs plantes et leurs espaces.
 
----
-
-## Mécanique de jeu 🌿
-
 Les utilisateurs de **Plantopia** peuvent interagir avec leurs plantes virtuelles dans un environnement en RA. En plus de tester l'agencement des plantes, il est possible de débloquer des fonctionnalités via des actions, et les plantes évoluent selon leur "soin" et l'entretien virtuel qu'elles reçoivent.
 
 - **Arrosage virtuel** : Arrosez les plantes régulièrement pour simuler leur entretien.
 - **Gestion de l'environnement** : Changez l'éclairage et ajustez les conditions pour que vos plantes prospèrent.
 - **Points et Récompenses** : Gagnez des points en fonction de vos actions et utilisez-les pour accéder à de nouvelles plantes.
-
----
-
-## Rôles spéciaux 🌟
 
 Les utilisateurs peuvent acheter des rôles dans la boutique du jeu pour influencer l'évolution de leurs plantes, ajouter des effets visuels et débloquer des fonctionnalités spéciales :
 
@@ -44,17 +36,6 @@ Les utilisateurs peuvent acheter des rôles dans la boutique du jeu pour influen
    
 2. **Neutre (Neutral) 🌾**
    - **Effet** : Aucun effet particulier. L'utilisateur interagit avec les plantes sans influences supplémentaires.
-
----
-
-## PLANTOPIA Actions et Points System
-
-| **Action**         | **Points Earned** |
-|--------------------|-------------------|
-| Se connecter       | 10 points         |
-| Arroser une plante | 20 points         |
-| Ajouter une plante | 15 points         |
-| Réorganiser une plante | 25 points       |
 
 ---
 
