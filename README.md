@@ -1,27 +1,5 @@
 # Plantopia 🌱
 
-**Pour lancer l'application**
-
-1. Clonez le dépôt :
-   ```bash
-   git clone https://github.com/votre-utilisateur/plantopia.git
-   ```
-
-2. Accédez au répertoire du projet :
-   ```bash
-   cd plantopia
-   ```
-
-3. Installez les dépendances :
-   ```bash
-   npm install
-   ```
-
-4. Lancez l'application en mode développement :
-   ```bash
-   npm run dev
-   ```
-
 ![Plantopia-BeteACornes](https://github.com/user-attachments/assets/81a6915c-8fc6-49e4-bade-47f7c937ee9a)
 
 **Plantopia** est une application mobile Android utilisant la **Réalité Augmentée (RA)**, permettant aux utilisateurs de tester l'agencement de plantes virtuelles dans leur espace. Utilisez la RA pour voir comment les différentes plantes s’intègrent dans votre intérieur, ajustez la disposition et explorez des configurations avant de faire votre choix.
