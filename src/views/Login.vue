@@ -304,7 +304,7 @@
         closeServerModal();
         presentToast('Server address updated successfully!');
       } catch (error) {
-        presentToast('Failed to update server address.');
+        //presentToast('Failed to update server address.');
       }
     }
   };
@@ -326,7 +326,7 @@
         presentToast('No user preferences found to update.');
       }
     } catch (error) {
-      presentToast('Failed to update server address.');
+      //presentToast('Failed to update server address.');
     }
   };
   
@@ -360,7 +360,7 @@
         })
       );
     } catch (error) {
-      presentToast('Failed to fetch servers.');
+      //presentToast('Failed to fetch servers.');
       servers.value = [];
     }
   };

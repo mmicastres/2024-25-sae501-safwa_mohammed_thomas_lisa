@@ -48,28 +48,56 @@
 <body>
   <div id="modelUI">
     <select id="model-select"></select>
-    <button id="changeModelButton">Change Model</button>
+    <button id="changeModelButton">Changer de modèle</button>
   </div>
   <div id="overlay-content"></div>
   <script type="application/json" id="models-data">
     [
-      {
-        "name": "Duck",
-        "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
-        "imageSrc": "https://th.bing.com/th/id/R.768cdb94accc7b4949919ac2f58cfc71?rik=IrtuX1L0mvSMTw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f5PaCHum.jpg&ehk=1wkpazwC51JIrHxTVWx%2fDWrb8Rb67RD24oSrKA5TnsA%3d&risl=&pid=ImgRaw&r=0",
-        "description": "A small duck model used for testing.",
-        "scale": 0.1,
-        "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/DuckCM.png"
-      },
-      {
-        "name": "Avocado",
-        "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf",
-        "imageSrc": "https://th.bing.com/th/id/OIP.nvQC6VYxvemYV1ynKm3elgHaEp?rs=1&pid=ImgDetMain",
-        "description": "Avocado tree of the family Lauraceae",
-        "scale": 5.0,
-        "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado_baseColor.png"
-      }
-    ]
+    {
+      "name": "Duck",
+      "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
+      "imageSrc": "https://th.bing.com/th/id/R.768cdb94accc7b4949919ac2f58cfc71?rik=IrtuX1L0mvSMTw&riu=http%3a%2f%2fwallpapercave.com%2fwp%2f5PaCHum.jpg&ehk=1wkpazwC51JIrHxTVWx%2fDWrb8Rb67RD24oSrKA5TnsA%3d&risl=&pid=ImgRaw&r=0",
+      "description": "A small duck model used for testing.",
+      "scale": 0.1,
+      "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/DuckCM.png"
+    },
+    {
+      "name": "Avocado",
+      "modelSrc": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado.gltf",
+      "imageSrc": "https://th.bing.com/th/id/OIP.nvQC6VYxvemYV1ynKm3elgHaEp?rs=1&pid=ImgDetMain",
+      "description": "Avocado tree of the family Lauraceae",
+      "scale": 5.0,
+      "texture": "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Avocado/glTF/Avocado_baseColor.png"
+    },
+    {
+      "name": "Plant",
+      "modelSrc": "https://test.nanodata.cloud/static/3d/plant.glb",
+      "imageSrc": "https://th.bing.com/th/id/OIP.nvQC6VYxvemYV1ynKm3elgHaEp?rs=1&pid=ImgDetMain",
+      "description": "A plant model used for testing.",
+      "scale": 0.8
+    },
+    {
+      "name": "Banana Plant with Pot",
+      "modelSrc": "https://test.nanodata.cloud/static/3d/banana_plant_with_pot.glb",
+      "imageSrc": "https://th.bing.com/th/id/OIP.Y4PUs6UyklcDsnR_r-bV4gHaIQ?rs=1&pid=ImgDetMain",
+      "description": "Le bananier est une plante tropicale connue pour ses grandes feuilles vertes luxuriantes et sa croissance rapide. Bien qu'ils soient généralement associés à la production de fruits, les bananiers ornementaux sont également populaires en tant que plantes décoratives d'intérieur et d'extérieur.",
+      "scale": 1.2
+    },
+    {
+      "name": "Phalaenopsis Young King",
+      "modelSrc": "https://test.nanodata.cloud/static/3d/phal_young_king_fbx.glb",
+      "imageSrc": "https://www.orchidroots.com/static/utils/images/hybrid/hyb_000032268_900001870.jpg",
+      "description": "Le Phalaenopsis Young King est une étonnante orchidée hybride du genre Phalaenopsis, connue pour ses fleurs élégantes et durables. Souvent appelée « orchidée papillon de nuit », cette variété est appréciée des amateurs d'orchidées pour ses couleurs éclatantes et sa facilité d'entretien.",
+      "scale": 2.0
+    },
+    {
+      "name": "Carnivorous Plant",
+      "modelSrc": "https://test.nanodata.cloud/static/3d/plante_carnivore_modele_3d.glb",
+      "imageSrc": "https://i1.wp.com/earthnworld.com/wp-content/uploads/2017/06/Dionaea-1.jpg?ssl=1",
+      "description": "Les plantes carnivores sont des espèces botaniques fascinantes qui ont évolué pour piéger et digérer les insectes et les petits organismes afin de compléter leur apport en nutriments. Ces plantes poussent généralement dans des sols pauvres en nutriments où leurs adaptations carnivores les aident à survivre.",
+      "scale": 0.1
+    }
+  ]
   </script>
   <script type="module">
     import * as THREE from 'three';
